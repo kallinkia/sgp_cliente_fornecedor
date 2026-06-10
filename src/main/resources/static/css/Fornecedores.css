@@ -1,0 +1,147 @@
+body {
+    background: #eef3f8;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.topo h1 {
+    color: #16324f;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.topo p {
+    color: #7c8b9a;
+}
+
+.btn-cadastrar {
+    background: linear-gradient(135deg,#16324f,#24588d);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-weight: 600;
+}
+
+.btn-cadastrar:hover {
+    color: white;
+    transform: translateY(-2px);
+}
+
+.filtro-card,
+.tabela-card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    margin-bottom: 25px;
+}
+
+.filtro-card {
+    padding: 25px;
+}
+
+.tabela-card {
+    padding: 20px;
+}
+
+.table thead {
+    background: #16324f;
+    color: white;
+}
+
+.table th {
+    border: none;
+    padding: 18px;
+    font-size: 14px;
+}
+
+.table td {
+    vertical-align: middle;
+    padding: 15px;
+}
+
+.status {
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.ativo {
+    background: #d4edda;
+    color: #0f5132;
+}
+
+.inativo {
+    background: #f8d7da;
+    color: #842029;
+}
+
+.btn-editar {
+    background: #0d6efd;
+    color: white;
+}
+
+.btn-editar:hover {
+    background: #0b5ed7;
+    color: white;
+}
+
+.btn-excluir {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-excluir:hover {
+    background: #bb2d3b;
+    color: white;
+}
+
+.modal-content {
+    border: none;
+    border-radius: 20px;
+}
+
+.modal-header {
+    background: linear-gradient(135deg,#16324f,#24588d);
+    color: white;
+}
+
+.modal-header .btn-close {
+    filter: invert(1);
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.btn-salvar {
+    background: #198754;
+    color: white;
+    padding: 10px 25px;
+}
+
+.btn-salvar:hover {
+    background: #157347;
+    color: white;
+}
+
+.form-control,
+.form-select {
+    height: 45px;
+    border-radius: 10px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #24588d;
+    box-shadow: 0 0 0 .2rem rgba(36,88,141,.15);
+}
