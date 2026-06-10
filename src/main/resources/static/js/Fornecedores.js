@@ -1,0 +1,117 @@
+const API_BUSCAR_TODOS = "http://localhost:8011/Fornecedores/listarTodos";
+const API_SALVAR = "http://localhost:8011/Fornecedores/salvar";
+const API_BUSCAR_POR_ID = "http://localhost:8011/Fornecedores/listarId";
+const API_ATUALIZAR = "http://localhost:8011/Fornecedores/atualizar";
+const API_DELETAR = "http://localhost:8011/Fornecedores/deletar";
+
+let editandoId = null;
+
+function limparFormulario(){
+	document.getElementById("razaoSocial").value = "";
+	document.getElementById("nomeFantasia").value = "";
+	document.getElementById("cnpj").value = "";
+	document.getElementById("email").value = "";
+	document.getElementById("telefone").value = "";
+	document.getElementById("contatoResponsavel").value = "";
+	document.getElementById("endereco").value = "";
+	document.getElementById("cidade").value = "";
+	document.getElementById("estado").value = "";
+	document.getElementById("prazoMedioEntrega").value = "";
+	document.getElementById("status").value = "";
+	editandoId= null;
+}
+
+function abrirModal(){
+	const modal = new bootstrap.Modal(document.getElementById("fornecedorModal"));
+	modal.show();
+}
+
+function fecharModal(){
+	const modalElement = document.getElementById("fornecedorModal");
+	const modal = bootstrap.Modal.getInstance(modalElement);
+	modal.hide();
+}
+
+
+
+async function listarTodos(){
+	const response =await fetch(API_BUSCAR_TODOS);
+	const fornecedores = await response.json();
+	const tbody = document.querySelector("tbody");
+			tbody.innerHTML="";
+
+	fornecedores.forEach(fornecedores=>{
+	const tr = document.createElement("tr");
+	tr.innerHTML = `
+		<td>${fornecedores.id}</td>
+		<td>${fornecedores.razaoSocial}</td>
+		<td>${fornecedores.nomeFantasia}</td>
+		<td>${fornecedores.cnpj}</td>
+		<td>${fornecedores.email}</td>
+		<td>${fornecedores.telefone}</td>
+		<td>${fornecedores.contatoResponsavel}</td>
+		<td>${fornecedores.endereco}</td>
+		<td>${fornecedores.cidade}</td>
+		<td>${fornecedores.estado}</td>
+		<td>${fornecedores.prazoMedioEntrega}</td>
+		<td>${fornecedores.status}</td>
+		<td>
+
+		    <button class="btn btn-warning btn-sm" onclick="editar(${fornecedores.id})">
+		        Editar
+		    </button>
+
+		    <button class="btn btn-danger btn-sm" onclick="deletar(${fornecedores.id})">
+		        Deletar
+		    </button>
+
+		</td>
+	`;
+	
+	tbody.appendChild(tr);
+
+});
+}
+
+//inicializar
+document.addEventListener("DOMContentLoaded", () => {
+	listarTodos();
+});
+
+
+async function salvar(){
+	const fornecedores = {
+		razaoSocial: document.getElementById("razaoSocial").value,
+			nomeFantasia: document.getElementById("nomeFantasia").value,
+			cnpj: document.getElementById("cnpj").value,
+			email: document.getElementById("email").value,
+			telefone: document.getElementById("telefone").value,
+			contatoResponsavel: document.getElementById("contatoResponsavel").value,
+			endereco: document.getElementById("endereco").value,
+			cidade: document.getElementById("cidade").value,
+			estado: document.getElementById("estado").value,
+			prazoMedioEntrega: document.getElementById("prazoMedioEntrega").value,
+			status: document.getElementById("status").value
+	};
+	console.log("SALVANDO...");
+	if (editandoId){
+		await fetch (`${API_ATUALIZAR}/${editandoId}`,{
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body:JSON.stringify(fornecedores)
+		});
+	}else {
+await fetch(API_SALVAR, {
+	method: "POST",
+	headers: {
+		"Content-Type": "application/json"
+	},
+	body: JSON.stringify(fornecedores)
+});	
+}
+fecharModal();
+await listarTodos();
+limparFormulario();	
+}
