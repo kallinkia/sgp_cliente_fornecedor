@@ -9,8 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.swing.Spring;
 import javax.validation.constraints.Email;
 
+import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
@@ -23,7 +25,9 @@ public class ClienteEntity implements Serializable {
 	private long id;
 	private String nome_razaoSocial;
 	@CPF
-	private String cpf_cnpj;
+	private String cpf;
+	@CNPJ
+	private String cnpj;
 	@Email
 	private String email;
 	private String telefone;
@@ -43,6 +47,19 @@ public class ClienteEntity implements Serializable {
 		return id;
 	}
 
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	public String getCnpj() {
+		return cnpj;
+	}
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -55,13 +72,6 @@ public class ClienteEntity implements Serializable {
 		this.nome_razaoSocial = nome_razaoSocial;
 	}
 
-	public String getCpf_cnpj() {
-		return cpf_cnpj;
-	}
-
-	public void setCpf_cnpj(String cpf_cnpj) {
-		this.cpf_cnpj = cpf_cnpj;
-	}
 
 	public String getEmail() {
 		return email;
