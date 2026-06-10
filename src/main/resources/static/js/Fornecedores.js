@@ -115,3 +115,34 @@ fecharModal();
 await listarTodos();
 limparFormulario();	
 }
+
+async function deletar(id){
+	if (!confirm("Deseja realmente excluir?")) return;
+	
+	await fetch (`${API_DELETAR}/${id}`,{
+		method: "DELETE"
+	});
+	listarTodos();
+}
+
+async function editar(id){
+	const response =await fetch(API_BUSCAR_POR_ID);
+	const fornecedores = await response.json();
+	
+	editandoId = id;
+	
+	document.getElementById("razaoSocial").value=fornecedores.razaoSocial;
+	document.getElementById("nomeFantasia").value =fornecedores.nomeFantasia;
+	document.getElementById("cnpj").value =fornecedores.cnpj;
+	document.getElementById("email").value =fornecedores.email;
+	document.getElementById("telefone").value =fornecedores.telefone;
+	document.getElementById("contatoResponsavel").value =fornecedores.contatoResponsavel;
+	document.getElementById("endereco").value =fornecedores.endereco;
+	document.getElementById("cidade").value =fornecedores.cidade;
+	document.getElementById("estado").value =fornecedores.estado;
+	document.getElementById("prazoMedioEntrega").value= fornecedores.prazoMedioEntrega;
+	document.getElementById("status").value=fornecedores.status;
+	
+	abrirModal();
+	
+}
