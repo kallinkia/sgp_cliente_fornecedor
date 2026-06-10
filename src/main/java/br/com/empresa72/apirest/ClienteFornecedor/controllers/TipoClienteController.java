@@ -55,10 +55,14 @@ public class TipoClienteController {
 	@DeleteMapping("/deletar/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deletar(@PathVariable Long id) {
+		
 
 		if (Clie.existsById(id)) {
 			Clie.deleteById(id);
+			
+			
 		}
+		
 	}
 
 	// SALVANDO USUARIO
@@ -72,4 +76,5 @@ public class TipoClienteController {
 
 		return Clie.save(cliee);
 	}
+	
 }
