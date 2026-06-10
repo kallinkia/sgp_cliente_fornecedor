@@ -15,13 +15,36 @@ public class TipoClienteEntity {
 	private long id;
 	private String pessoaFisica;
 	private String pessoaJuridica;
+	private String revendedor;
+	private String oficinaParceira;
+
+	public String getRevendedor() {
+		return revendedor;
+	}
+
+	public void setRevendedor(String revendedor) {
+		this.revendedor = revendedor;
+	}
+
+	public String getOficinaParceira() {
+		return oficinaParceira;
+	}
+
+	public void setOficinaParceira(String oficinaParceira) {
+		this.oficinaParceira = oficinaParceira;
+	}
+
 	private float percentualDesconto;
 	@Column(nullable = false)
-	private boolean ativo;
-	
-	
-	
-	
+	private boolean status;
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 
 	public float getPercentualDesconto() {
 		return percentualDesconto;
