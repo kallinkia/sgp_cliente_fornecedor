@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGP - Avaliação de Fornecedores</title>
+
+    <link rel="stylesheet" href="css/avaliacaofornecedor.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="titulo">
+            <h1>Avaliação de Fornecedores</h1>
+            <p>Registre e acompanhe a qualidade dos fornecedores</p>
+        </div>
+
+        <form>
+
+            <div class="grid">
+
+                <div class="campo">
+                    <label>Fornecedor *</label>
+
+                    <div class="input-box">
+                        <i class="fa-solid fa-building"></i>
+
+                        <select required>
+                            <option value="">Selecione um fornecedor</option>
+                            <option>Fornecedor Alfa</option>
+                            <option>Fornecedor Beta</option>
+                            <option>Fornecedor Gama</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label>Data da Avaliação *</label>
+
+                    <div class="input-box">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <input type="date" required>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label>Qualidade das Peças *</label>
+
+                    <div class="input-box">
+                        <i class="fa-solid fa-star"></i>
+
+                        <select required>
+                            <option value="">Nota</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label>Prazo de Entrega *</label>
+
+                    <div class="input-box">
+                        <i class="fa-solid fa-truck"></i>
+
+                        <select required>
+                            <option value="">Nota</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label>Atendimento *</label>
+
+                    <div class="input-box">
+                        <i class="fa-solid fa-headset"></i>
+
+                        <select required>
+                            <option value="">Nota</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label>Preço *</label>
+
+                    <div class="input-box">
+                        <i class="fa-solid fa-dollar-sign"></i>
+
+                        <select required>
+                            <option value="">Nota</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="campo campo-full">
+                    <label>Observações</label>
+
+                    <textarea
+                        maxlength="500"
+                        placeholder="Digite observações sobre o fornecedor (máximo 500 caracteres)...">
+                    </textarea>
+                </div>
+
+            </div>
+
+            <div class="resumo">
+
+                <div class="media-box">
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <div>
+                        <h3>Média Geral</h3>
+                        <span>0.0 / 5.0</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="acoes">
+
+                <button type="reset" class="btn-cancelar">
+                    Cancelar
+                </button>
+
+                <button type="submit" class="btn-salvar">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    Salvar Avaliação
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
