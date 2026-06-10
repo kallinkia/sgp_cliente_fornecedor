@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "TipoCliente")
@@ -17,7 +20,18 @@ public class TipoClienteEntity {
 	private String pessoaJuridica;
 	private String revendedor;
 	private String oficinaParceira;
+	@DecimalMin(value = "0", message = "Desconto deve ser maior ou igual a 0")
+	@DecimalMax(value = "100", message = "Desconto deve ser maior ou igual a 100")
+	private float percentualDesconto;
+	@Column(nullable = false)
+	@NotBlank(message = "Status é obrigatório")
+	private boolean status;
+	private String clientePremium;
+	@Column(nullable = false, unique = true)
+	@NotBlank(message ="A descrição é única e obrigatória." )
+	private String descricao;
 
+	
 	public String getRevendedor() {
 		return revendedor;
 	}
@@ -34,10 +48,6 @@ public class TipoClienteEntity {
 		this.oficinaParceira = oficinaParceira;
 	}
 
-	private float percentualDesconto;
-	@Column(nullable = false)
-	private boolean status;
-
 	public boolean isStatus() {
 		return status;
 	}
@@ -53,10 +63,6 @@ public class TipoClienteEntity {
 	public void setPercentualDesconto(float percentualDesconto) {
 		this.percentualDesconto = percentualDesconto;
 	}
-
-	private String clientePremium;
-	@Column(nullable = false, unique = true)
-	private String descricao;
 
 	public String getDescricao() {
 		return descricao;

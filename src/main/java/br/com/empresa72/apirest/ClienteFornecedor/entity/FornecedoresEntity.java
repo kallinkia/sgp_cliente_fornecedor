@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.br.CNPJ;
 
 @Entity
 @Table(name = "Fornecedor")
-public class Fornecedores {
+public class FornecedoresEntity {
 		@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
