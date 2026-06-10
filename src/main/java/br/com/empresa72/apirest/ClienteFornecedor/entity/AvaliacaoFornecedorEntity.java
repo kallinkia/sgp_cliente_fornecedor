@@ -39,7 +39,7 @@ public class AvaliacaoFornecedorEntity implements Serializable{
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idFornecedores")
-	private Fornecedores fornecedor;
+	private FornecedoresEntity fornecedor;
 
 	public long getId() {
 		return id;
