@@ -89,11 +89,11 @@ public class AvaliacaoFornecedorEntity implements Serializable{
 		this.preco = preco;
 	}
 
-	public Fornecedores getFornecedor() {
+	public FornecedoresEntity getFornecedor() {
 		return fornecedor;
 	}
 
-	public void setFornecedor(Fornecedores fornecedor) {
+	public void setFornecedor(FornecedoresEntity fornecedor) {
 		this.fornecedor = fornecedor;
 	}
 	
