@@ -34,6 +34,10 @@ public class ClienteEntity implements Serializable {
 	private String estado;
 	private String tipo;
 	private boolean ativo;
+	
+	
+	
+	
 	public long getId() {
 		return id;
 	}
