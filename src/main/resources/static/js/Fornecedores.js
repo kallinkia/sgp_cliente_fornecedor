@@ -21,23 +21,51 @@ function limparFormulario(){
 	editandoId= null;
 }
 
+function abrirModal(){
+	const modal = new bootstrap.Modal(document.getElementById("fornecedorModal"));
+	modal.show();
+}
+
+function fecharModal(){
+	const modalElement = document.getElementById("fornecedorModal");
+	const modal = bootstrap.Modal.getInstance(modalElement);
+	modal.hide();
+}
+
 
 
 async function listarTodos(){
 	const response =await fetch(API_BUSCAR_TODOS);
-	
-	const participantes = await response.json();
+	const fornecedores = await response.json();
 	const tbody = document.querySelector("tbody");
-		tbody.innerHTML="";
+			tbody.innerHTML="";
 
-	participantes.forEach(participante=>{
+	fornecedores.forEach(fornecedores=>{
 	const tr = document.createElement("tr");
 	tr.innerHTML = `
-		<td>${participante.id}</td>
-		<td>${participante.nome}</td>
-		<td>${participante.cidade}</td>
-		<td>${participante.tipoCorrida}</td>
-		<td>${participante.numeroCamisa}</td>
+		<td>${fornecedores.id}</td>
+		<td>${fornecedores.razaoSocial}</td>
+		<td>${fornecedores.nomeFantasia}</td>
+		<td>${fornecedores.cnpj}</td>
+		<td>${fornecedores.email}</td>
+		<td>${fornecedores.telefone}</td>
+		<td>${fornecedores.contatoResponsavel}</td>
+		<td>${fornecedores.endereco}</td>
+		<td>${fornecedores.cidade}</td>
+		<td>${fornecedores.estado}</td>
+		<td>${fornecedores.prazoMedioEntrega}</td>
+		<td>${fornecedores.status}</td>
+		<td>
+
+		    <button class="btn btn-warning btn-sm" onclick="editar(${fornecedores.id})">
+		        Editar
+		    </button>
+
+		    <button class="btn btn-danger btn-sm" onclick="deletar(${fornecedores.id})">
+		        Deletar
+		    </button>
+
+		</td>
 	`;
 	
 	tbody.appendChild(tr);
@@ -52,21 +80,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 async function salvar(){
-	const participantes = {
-		nome: document.getElementById("nome").value,
-		cidade: document.getElementById("cidade").value,
-		tipoCorrida: document.getElementById("tipoCorrida").value,
-		numeroCamisa: document.getElementById("numeroCamisa").value
+	const fornecedores = {
+		razaoSocial: document.getElementById("razaoSocial").value,
+			nomeFantasia: document.getElementById("nomeFantasia").value,
+			cnpj: document.getElementById("cnpj").value,
+			email: document.getElementById("email").value,
+			telefone: document.getElementById("telefone").value,
+			contatoResponsavel: document.getElementById("contatoResponsavel").value,
+			endereco: document.getElementById("endereco").value,
+			cidade: document.getElementById("cidade").value,
+			estado: document.getElementById("estado").value,
+			prazoMedioEntrega: document.getElementById("prazoMedioEntrega").value,
+			status: document.getElementById("status").value
 	};
-	
-		await fetch(API_SALVAR, {
+	console.log("SALVANDO...");
+	if (editandoId){
+		await fetch (`${API_ATUALIZAR}/${editandoId}`,{
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body:JSON.stringify(fornecedores)
+		});
+	}else {
+await fetch(API_SALVAR, {
 	method: "POST",
 	headers: {
 		"Content-Type": "application/json"
 	},
-	body: JSON.stringify(participantes)
+	body: JSON.stringify(fornecedores)
 });	
-
+}
 fecharModal();
-carregarCarros();	
+await listarTodos();
+limparFormulario();	
 }
