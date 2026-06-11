@@ -1,10 +1,10 @@
-const API_BUSCAR_TODOS = "http://localhost:8080/Fornecedores/listarTodos";
-const API_SALVAR = "http://localhost:8080/Fornecedores/salvar";
-const API_BUSCAR_POR_ID = "http://localhost:8080/Fornecedores/listarId";
-const API_ATUALIZAR = "http://localhost:8080/Fornecedores/atualizar";
-const API_DELETAR = "http://localhost:8080/Fornecedores/deletar";
-const API_BUSCAR_RAZAO_SOCIAL = "http://localhost:8080/Fornecedores/listarRazaoSocial";
-const API_BUSCAR_CNPJ = "http://localhost:8080/Fornecedores/listarCnpj";
+const API_BUSCAR_TODOS = "http://localhost:8011/Fornecedores/listarTodos";
+const API_SALVAR = "http://localhost:8011/Fornecedores/salvar";
+const API_BUSCAR_POR_ID = "http://localhost:8011/Fornecedores/listarId";
+const API_ATUALIZAR = "http://localhost:8011/Fornecedores/atualizar";
+const API_DELETAR = "http://localhost:8011/Fornecedores/deletar";
+const API_BUSCAR_RAZAO_SOCIAL = "http://localhost:8011/Fornecedores/listarRazaoSocial";
+const API_BUSCAR_CNPJ = "http://localhost:8011/Fornecedores/listarCnpj";
 
 let editandoId = null;
 
