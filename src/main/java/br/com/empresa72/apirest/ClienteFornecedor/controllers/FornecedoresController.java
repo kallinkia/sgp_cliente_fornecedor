@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import br.com.empresa72.apirest.ClienteFornecedor.repository.FornecedoresReposit
 
 @RestController
 @RequestMapping("/Fornecedores")
+@CrossOrigin("*")
 public class FornecedoresController {
 	@Autowired
 	private FornecedoresRepository usu;
@@ -39,7 +41,25 @@ public class FornecedoresController {
 		return usu.findById(id);
 			
 		}
-		
+	
+	// BUSCAR POR RAZÃO SOCIAL
+	@GetMapping("/listarRazaoSocial/{razaoSocial}")
+	@ResponseStatus(HttpStatus.OK)
+	public List<FornecedoresEntity> buscarPorRazaoSocial(
+	        @PathVariable String razaoSocial) {
+
+	    return usu.findByRazaoSocialContainingIgnoreCase(razaoSocial);
+	}
+
+
+	// BUSCAR POR CNPJ
+	@GetMapping("/listarCnpj/{cnpj}")
+	@ResponseStatus(HttpStatus.OK)
+	public Optional<FornecedoresEntity> buscarPorCnpj(
+	        @PathVariable String cnpj) {
+
+	    return usu.findByCnpj(cnpj);
+	}
 
 	// SALVAR
 	@PostMapping ("/salvar")
