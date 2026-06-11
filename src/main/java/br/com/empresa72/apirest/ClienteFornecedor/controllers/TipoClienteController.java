@@ -68,11 +68,7 @@ public class TipoClienteController {
 	// SALVANDO USUARIO
 	@PostMapping("/salvar")
 	@ResponseStatus(HttpStatus.CREATED)
-	public TipoClienteEntity gravar(@PathVariable long id, @RequestBody TipoClienteEntity cliee) {
-
-		if (Clie.existsById(id)) {
-			Clie.deleteById(id);
-		}
+	public TipoClienteEntity gravar( @RequestBody TipoClienteEntity cliee) {
 
 		return Clie.save(cliee);
 	}

@@ -25,7 +25,7 @@ public class TipoClienteEntity {
 	private float percentualDesconto;
 	@Column(nullable = false)
 	@NotBlank(message = "Status é obrigatório")
-	private boolean status;
+	private String status;
 	private String clientePremium;
 	@Column(nullable = false, unique = true)
 	@NotBlank(message ="A descrição é única e obrigatória." )
@@ -48,11 +48,11 @@ public class TipoClienteEntity {
 		this.oficinaParceira = oficinaParceira;
 	}
 
-	public boolean isStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
