@@ -6,14 +6,17 @@ const API_DELETAR = 'http://localhost:8000/avaliacao/deletar';
 const API_ATUALIZAR = 'http://localhost:8000/avaliacao/atualizar';
 
 
-async function salvarAluno() {
-    const aluno = {
-        nome: document.getElementById("dataDaAvaliacao").value,
-        cpf: document.getElementById("qualidadeDasPecas").value,
-        email: document.getElementById("prazoDeEntrega").value,
-        telefone: document.getElementById("atendimento").value,
-        endereco: document.getElementById("preco").value,
-        dataDeNascimento: document.getElementById("observacoes").value,
+//VARIAVEL DE CONTROLE
+let editandoid = null;
+
+async function salvarAvaliacao() {
+    const avaliacao = {
+        dataDaAvaliacao: document.getElementById("dataDaAvaliacao").value,
+        qualidadeDasPecas: document.getElementById("qualidadeDasPecas").value,
+        prazoDeEntrega: document.getElementById("prazoDeEntrega").value,
+        atendimento: document.getElementById("atendimento").value,
+        preco: document.getElementById("preco").value,
+        observacoes: document.getElementById("observacoes").value,
     };
 
     await fetch(API_CADASTRAR, {
@@ -21,7 +24,7 @@ async function salvarAluno() {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(aluno)
+        body: JSON.stringify(avaliacao)
     });
 
     limparFormulario();
