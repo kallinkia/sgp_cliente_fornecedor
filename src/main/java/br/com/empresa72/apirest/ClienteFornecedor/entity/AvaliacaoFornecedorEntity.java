@@ -36,10 +36,21 @@ public class AvaliacaoFornecedorEntity implements Serializable{
 	private int atendimento;
 	@Size(min = 1, max = 5)
 	private int preco;
+	@Size(max = 500)
+	private String observacoes;
+	
+	public String getObservacoes() {
+		return observacoes;
+	}
+
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idFornecedores")
 	private FornecedoresEntity fornecedor;
+	
+	public void setObservacoes(String observacoes) {
+		this.observacoes = observacoes;
+	}
 
 	public long getId() {
 		return id;
