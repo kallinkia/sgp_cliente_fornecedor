@@ -8,12 +8,12 @@ const API_DELETAR = "http://localhost:8080/cliente/deletar";
 let editandoId = null;
 
 function abrirModal(){
-	const modal = new bootstrap.Modal(document.getElementById("fornecedorModal"));
+	const modal = new bootstrap.Modal(document.getElementById("clienteModal"));
 	modal.show();
 }
 
 function fecharModal(){
-	const modalElement = document.getElementById("fornecedorModal");
+	const modalElement = document.getElementById("clienteModal");
 	const modal = bootstrap.Modal.getInstance(modalElement);
 	modal.hide();
 }
@@ -81,11 +81,11 @@ async function salvar() {
     }
 
     fecharModal();
-    await listarTodos();
+    await listartodos();
     limparFormulario();
 }
 
-async function listarTodos() {
+async function listartodos() {
 
     const response = await fetch(API_BUSCAR_TODOS);
     const clientes = await response.json();
