@@ -8,17 +8,12 @@ const API_ATUALIZAR = 'http://localhost:8000/avaliacao/atualizar';
 
 async function salvarAluno() {
     const aluno = {
-        nome: document.getElementById("nome").value,
-        cpf: document.getElementById("cpf").value,
-        email: document.getElementById("email").value,
-        telefone: document.getElementById("telefone").value,
-        endereco: document.getElementById("endereco").value,
-        dataDeNascimento: document.getElementById("dataNascimento").value,
-        peso: document.getElementById("peso").value,
-        altura: document.getElementById("altura").value,
-        alergia: document.getElementById("alergia").value,
-        problemasCardiacos: document.getElementById("cardiaco").value,
-        mensalidade: document.getElementById("mensalidade").value
+        nome: document.getElementById("dataDaAvaliacao").value,
+        cpf: document.getElementById("qualidadeDasPecas").value,
+        email: document.getElementById("prazoDeEntrega").value,
+        telefone: document.getElementById("atendimento").value,
+        endereco: document.getElementById("preco").value,
+        dataDeNascimento: document.getElementById("observacoes").value,
     };
 
     await fetch(API_CADASTRAR, {
