@@ -11,10 +11,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import br.com.empresa72.apirest.ClienteFornecedor.entity.Fornecedores;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.empresa72.apirest.ClienteFornecedor.entity.FornecedoresEntity;
 import br.com.empresa72.apirest.ClienteFornecedor.repository.FornecedoresRepository;
 
+
+@RestController
+@RequestMapping("/Fornecedores")
 public class FornecedoresController {
 	@Autowired
 	private FornecedoresRepository usu;
@@ -22,14 +28,14 @@ public class FornecedoresController {
 	//BUSCAR TODOS
 		@GetMapping("/listarTodos")
 		@ResponseStatus(HttpStatus.OK)
-		public List<Fornecedores> listarTodos(){
+		public List<FornecedoresEntity> listarTodos(){
 			return usu.findAll();
 		}
 
 	// BUSCAR POR ID
 	@GetMapping("/listarId/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public Optional<Fornecedores> buscarPorID(@PathVariable Long id){
+	public Optional<FornecedoresEntity> buscarPorID(@PathVariable Long id){
 		return usu.findById(id);
 			
 		}
@@ -38,7 +44,7 @@ public class FornecedoresController {
 	// SALVAR
 	@PostMapping ("/salvar")
 	@ResponseStatus(HttpStatus.OK)
-	public Fornecedores gravarFornecedores(@RequestBody Fornecedores fornecedores) {
+	public FornecedoresEntity gravarFornecedores(@RequestBody FornecedoresEntity fornecedores) {
 	return usu.save(fornecedores);
 	}
 
@@ -47,7 +53,7 @@ public class FornecedoresController {
 	// ATUALIZAR
 	@PutMapping("/atualizar/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public Fornecedores atualizarFornecedores(@PathVariable Long id, @RequestBody Fornecedores fornecedores) {
+	public FornecedoresEntity atualizarFornecedores(@PathVariable Long id, @RequestBody FornecedoresEntity fornecedores) {
 		fornecedores.setId(id);
 		return usu.save(fornecedores);
 	}
