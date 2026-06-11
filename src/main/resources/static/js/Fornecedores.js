@@ -44,6 +44,15 @@ async function listarTodos(){
 
 	fornecedores.forEach(fornecedores=>{
 	const tr = document.createElement("tr");
+	let statusTexto;
+	  
+	  if (fornecedores.status === true) {
+	      statusTexto = "Ativo";
+	  } else {
+	      statusTexto = "Inativo";
+	  }
+	
+	
 	tr.innerHTML = `
 		<td>${fornecedores.id}</td>
 		<td>${fornecedores.razaoSocial}</td>
@@ -52,11 +61,8 @@ async function listarTodos(){
 		<td>${fornecedores.email}</td>
 		<td>${fornecedores.telefone}</td>
 		<td>${fornecedores.contatoResponsavel}</td>
-		<td>${fornecedores.endereco}</td>
 		<td>${fornecedores.cidade}</td>
-		<td>${fornecedores.estado}</td>
-		<td>${fornecedores.prazoMedioEntrega}</td>
-		<td>${fornecedores.status}</td>
+		<td>${fornecedores.status ? "Ativo" : "Inativo"}</td>
 		<td>
 
 		    <button class="btn btn-warning btn-sm" onclick="editar(${fornecedores.id})">
