@@ -9,9 +9,14 @@ let editandoId = null;
 
 function limparFormulario(){
 	
+	document.getElementById("Código").value = "";
+	document.getElementById("Status").value = "";
 	document.getElementById("Descrição").value = "";
 	document.getElementById("PercentualdeDesconto").value = "";
-	document.getElementById("Status").value = "";
+	document.getElementById("LimitedeCrédito").value = "";
+	document.getElementById("Prazo de Pagamento").value = "";
+	document.getElementById("Observações").value = "";
+	document.getElementById("PrazodePagamento").value = "";
 	
 	editandoId = null;
 	
@@ -19,13 +24,13 @@ function limparFormulario(){
 
 function AbrirModal(){
 	
-	const modal = new bootstrap.Modal(document.getElementById("cadastroModal"));
+	const modal = new bootstrap.Modal(document.getElementById("modalTipoCliente"));
 	modal.show();
 }
 
 function FecharModal(){
 	
-	const modalElement = document.getElementById("cadastroModal");
+	const modalElement = document.getElementById("modalTipoCliente");
 	const modal = bootstrap.Modal.getInstance(modalElement);
 	modal.hide();
 }
@@ -150,7 +155,7 @@ async function salvarNome(){
 		document.getElementById("Status").value =nome.Status;
 	
 		
-		aAbrirModal();
+		AbrirModal();
 		
 	}	
 		
