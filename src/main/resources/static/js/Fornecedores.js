@@ -1,8 +1,10 @@
-const API_BUSCAR_TODOS = "http://localhost:8011/Fornecedores/listarTodos";
-const API_SALVAR = "http://localhost:8011/Fornecedores/salvar";
-const API_BUSCAR_POR_ID = "http://localhost:8011/Fornecedores/listarId";
-const API_ATUALIZAR = "http://localhost:8011/Fornecedores/atualizar";
-const API_DELETAR = "http://localhost:8011/Fornecedores/deletar";
+const API_BUSCAR_TODOS = "http://localhost:8080/Fornecedores/listarTodos";
+const API_SALVAR = "http://localhost:8080/Fornecedores/salvar";
+const API_BUSCAR_POR_ID = "http://localhost:8080/Fornecedores/listarId";
+const API_ATUALIZAR = "http://localhost:8080/Fornecedores/atualizar";
+const API_DELETAR = "http://localhost:8080/Fornecedores/deletar";
+const API_BUSCAR_RAZAO_SOCIAL = "http://localhost:8080/Fornecedores/listarRazaoSocial";
+const API_BUSCAR_CNPJ = "http://localhost:8080/Fornecedores/listarCnpj";
 
 let editandoId = null;
 
@@ -37,7 +39,7 @@ function fecharModal(){
 async function listarTodos(){
 	const response =await fetch(API_BUSCAR_TODOS);
 	const fornecedores = await response.json();
-	const tbody = document.querySelector("tbody");
+	const tbody = document.getElementById("Fornecedor");
 			tbody.innerHTML="";
 
 	fornecedores.forEach(fornecedores=>{
@@ -145,4 +147,80 @@ async function editar(id){
 	
 	abrirModal();
 	
+}
+
+async function pesquisar() {
+
+    const razaoSocial = document.getElementById("filtroRazaoSocial").value;
+    const cnpj = document.getElementById("filtroCnpj").value;
+
+    let fornecedores = [];
+
+    if (cnpj !== "") {
+
+        const response = await fetch(
+            `${API_BUSCAR_CNPJ}/${cnpj}`
+        );
+
+        const fornecedor = await response.json();
+
+        if (fornecedor) {
+            fornecedores.push(fornecedor);
+        }
+
+    } else if (razaoSocial !== "") {
+
+        const response = await fetch(
+            `${API_BUSCAR_RAZAO_SOCIAL}/${razaoSocial}`
+        );
+
+        fornecedores = await response.json();
+
+    } else {
+
+        listarTodos();
+        return;
+    }
+
+    const tbody = document.getElementById("Fornecedor");
+    tbody.innerHTML = "";
+
+    fornecedores.forEach(fornecedores => {
+
+        const tr = document.createElement("tr");
+
+        tr.innerHTML = `
+            <td>${fornecedores.id}</td>
+            <td>${fornecedores.razaoSocial}</td>
+            <td>${fornecedores.nomeFantasia}</td>
+            <td>${fornecedores.cnpj}</td>
+            <td>${fornecedores.email}</td>
+            <td>${fornecedores.telefone}</td>
+            <td>${fornecedores.contatoResponsavel}</td>
+            <td>${fornecedores.endereco}</td>
+            <td>${fornecedores.cidade}</td>
+            <td>${fornecedores.estado}</td>
+            <td>${fornecedores.prazoMedioEntrega}</td>
+            <td>${fornecedores.status}</td>
+            <td>
+                <button
+                    class="btn btn-warning btn-sm"
+                    onclick="editar(${fornecedores.id})">
+
+                    Editar
+
+                </button>
+
+                <button
+                    class="btn btn-danger btn-sm"
+                    onclick="deletar(${fornecedores.id})">
+
+                    Deletar
+
+                </button>
+            </td>
+        `;
+
+        tbody.appendChild(tr);
+    });
 }

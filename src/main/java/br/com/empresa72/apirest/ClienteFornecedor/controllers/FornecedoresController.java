@@ -39,7 +39,25 @@ public class FornecedoresController {
 		return usu.findById(id);
 			
 		}
-		
+	
+	// BUSCAR POR RAZÃO SOCIAL
+	@GetMapping("/listarRazaoSocial/{razaoSocial}")
+	@ResponseStatus(HttpStatus.OK)
+	public List<FornecedoresEntity> buscarPorRazaoSocial(
+	        @PathVariable String razaoSocial) {
+
+	    return usu.findByRazaoSocialContainingIgnoreCase(razaoSocial);
+	}
+
+
+	// BUSCAR POR CNPJ
+	@GetMapping("/listarCnpj/{cnpj}")
+	@ResponseStatus(HttpStatus.OK)
+	public Optional<FornecedoresEntity> buscarPorCnpj(
+	        @PathVariable String cnpj) {
+
+	    return usu.findByCnpj(cnpj);
+	}
 
 	// SALVAR
 	@PostMapping ("/salvar")
