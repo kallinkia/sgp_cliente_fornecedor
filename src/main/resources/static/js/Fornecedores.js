@@ -71,9 +71,10 @@ async function listarTodos(){
 	`;
 	
 	tbody.appendChild(tr);
-
+	
 });
 }
+
 
 //inicializar
 document.addEventListener("DOMContentLoaded", () => {
@@ -96,6 +97,7 @@ async function salvar(){
 			status: document.getElementById("status").value
 	};
 	console.log("SALVANDO...");
+	console.log(fornecedores);
 	if (editandoId){
 		await fetch (`${API_ATUALIZAR}/${editandoId}`,{
 			method: "PUT",
@@ -113,9 +115,10 @@ await fetch(API_SALVAR, {
 	body: JSON.stringify(fornecedores)
 });	
 }
+
 fecharModal();
 await listarTodos();
-limparFormulario();	
+//limparFormulario();	
 }
 
 async function deletar(id){
@@ -128,7 +131,7 @@ async function deletar(id){
 }
 
 async function editar(id){
-	const response =await fetch(API_BUSCAR_POR_ID);
+	const response = await fetch(`${API_BUSCAR_POR_ID}/${id}`);
 	const fornecedores = await response.json();
 	
 	editandoId = id;
