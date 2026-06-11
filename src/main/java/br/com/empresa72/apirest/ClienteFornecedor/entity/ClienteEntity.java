@@ -38,9 +38,6 @@ public class ClienteEntity implements Serializable {
 	private boolean ativo;
 
 	// RELACIONAMENTOS
-	@ManyToOne
-	@JoinColumn(name = "idTipoCliente")
-	private TipoClienteEntity TipoCliente;
 
 	public long getId() {
 		return id;
