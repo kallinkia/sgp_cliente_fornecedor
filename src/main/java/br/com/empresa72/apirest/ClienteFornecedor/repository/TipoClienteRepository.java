@@ -10,6 +10,4 @@ import br.com.empresa72.apirest.ClienteFornecedor.entity.TipoClienteEntity;
 @Repository
 public interface TipoClienteRepository extends JpaRepository<TipoClienteEntity, Long> {
 
-	Optional<TipoClienteEntity> findByIdDescricao(String descricao);
-	boolean existisByDescricao(String descricao);
 }
