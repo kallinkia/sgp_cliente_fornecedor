@@ -44,12 +44,12 @@ async function listarTodos(){
 
 	fornecedores.forEach(fornecedores=>{
 	const tr = document.createElement("tr");
-	let status;
+	let statusAI;
 	  
 	  if (fornecedores.status === true) {
-	      status = "Ativo";
+	      statusAI = "Ativo";
 	  } else {
-	      status = "Inativo";
+	      statusAI = "Inativo";
 	  }
 
 		tr.innerHTML = `
