@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<script type="text/javascript" src="js/TipoCliente.js"></script>
 <title>SGP - Tipos de Clientes</title>
 
 <link rel="stylesheet" href="css/tipocliente.css">
@@ -195,11 +195,9 @@ rel="stylesheet">
                     <div class="campo-modal">
                         <label>Código</label>
 
-                        <input
-                            type="text"
-                            class="form-control"
-                            value="AUTO"
-                            readonly>
+                        <input type="text" class="form-control">
+                           
+                          
                     </div>
 
                     <div class="campo-modal">
@@ -326,11 +324,9 @@ rel="stylesheet">
 
                 </button>
 
-                <button
-                    type="submit"
-                    class="btn-salvar">
-
-                    <i class="fa-solid fa-floppy-disk"></i>
+                <button type="submit" class="btn-salvar" onclick="salvarNome();">
+                    
+                    <i class="fa-solid fa-floppy-disk"></i>  
                     Salvar
 
                 </button>
