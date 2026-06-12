@@ -44,7 +44,15 @@ async function listarTodos(){
 
 	fornecedores.forEach(fornecedores=>{
 	const tr = document.createElement("tr");
-	tr.innerHTML = `
+	let statusAI;
+	  
+	  if (fornecedores.status === true) {
+	      statusAI = "Ativo";
+	  } else {
+	      statusAI = "Inativo";
+	  }
+
+		tr.innerHTML = `
 		<td>${fornecedores.id}</td>
 		<td>${fornecedores.razaoSocial}</td>
 		<td>${fornecedores.nomeFantasia}</td>
@@ -52,11 +60,8 @@ async function listarTodos(){
 		<td>${fornecedores.email}</td>
 		<td>${fornecedores.telefone}</td>
 		<td>${fornecedores.contatoResponsavel}</td>
-		<td>${fornecedores.endereco}</td>
 		<td>${fornecedores.cidade}</td>
-		<td>${fornecedores.estado}</td>
-		<td>${fornecedores.prazoMedioEntrega}</td>
-		<td>${fornecedores.status}</td>
+		<td>${fornecedores.status ? "Ativo" : "Inativo"}</td>
 		<td>
 
 		    <button class="btn btn-warning btn-sm" onclick="editar(${fornecedores.id})">
@@ -71,9 +76,10 @@ async function listarTodos(){
 	`;
 	
 	tbody.appendChild(tr);
-
+	
 });
 }
+
 
 //inicializar
 document.addEventListener("DOMContentLoaded", () => {
@@ -96,6 +102,7 @@ async function salvar(){
 			status: document.getElementById("status").value
 	};
 	console.log("SALVANDO...");
+	console.log(fornecedores);
 	if (editandoId){
 		await fetch (`${API_ATUALIZAR}/${editandoId}`,{
 			method: "PUT",
@@ -113,9 +120,10 @@ await fetch(API_SALVAR, {
 	body: JSON.stringify(fornecedores)
 });	
 }
+
 fecharModal();
 await listarTodos();
-limparFormulario();	
+//limparFormulario();	
 }
 
 async function deletar(id){
@@ -128,7 +136,7 @@ async function deletar(id){
 }
 
 async function editar(id){
-	const response =await fetch(API_BUSCAR_POR_ID);
+	const response = await fetch(`${API_BUSCAR_POR_ID}/${id}`);
 	const fornecedores = await response.json();
 	
 	editandoId = id;
