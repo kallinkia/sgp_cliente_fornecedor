@@ -2,6 +2,7 @@ package br.com.empresa72.apirest.ClienteFornecedor.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +29,8 @@ public class ClienteEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private String nome_razaoSocial;
+	@Column(name = "nome_razaoSocial")
+	private String nomeRazaoSocial;
 	@CPF
 	private String cpf;
 	@CNPJ
@@ -50,11 +52,11 @@ public class ClienteEntity implements Serializable {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getNome_razaoSocial() {
-		return nome_razaoSocial;
+	public String nomeRazaoSocial() {
+		return nomeRazaoSocial;
 	}
-	public void setNome_razaoSocial(String nome_razaoSocial) {
-		this.nome_razaoSocial = nome_razaoSocial;
+	public void setNome_razaoSocial(String nomeRazaoSocial) {
+		this.nomeRazaoSocial = nomeRazaoSocial;
 	}
 	public String getCpf() {
 		return cpf;

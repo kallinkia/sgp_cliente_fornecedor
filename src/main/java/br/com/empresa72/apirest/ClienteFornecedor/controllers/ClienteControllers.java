@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.empresa72.apirest.ClienteFornecedor.entity.ClienteEntity;
+import br.com.empresa72.apirest.ClienteFornecedor.entity.FornecedoresEntity;
 import br.com.empresa72.apirest.ClienteFornecedor.repository.ClienteRepository;
 
 @RestController
@@ -76,5 +77,32 @@ public class ClienteControllers {
 			
 			
 			
+			@GetMapping("/listarNome/{nomeRazaoSocial}")
+			public Optional<ClienteEntity> buscarPorNome(
+			        @PathVariable String nomeRazaoSocial) {
+
+			    return clienterep.findByNomeRazaoSocial(nomeRazaoSocial);
+			}
+			
+			
+			// BUSCAR POR CNPJ
+			@GetMapping("/listarCnpj/{cnpj}")
+			@ResponseStatus(HttpStatus.OK)
+			public Optional<ClienteEntity> buscarPorCnpj(
+			        @PathVariable String cnpj) {
+
+			    return clienterep.findByCnpj(cnpj);
+			}
 	
+	       // BUSCAR POR CNPJ
+			@GetMapping("/listarCpf/{cpf}")
+			@ResponseStatus(HttpStatus.OK)
+				public Optional<ClienteEntity> buscarPorCpf(
+				   @PathVariable String cpf) {
+
+						    return clienterep.findByCpf(cpf);
+}		
+			
+	
+			
 }
