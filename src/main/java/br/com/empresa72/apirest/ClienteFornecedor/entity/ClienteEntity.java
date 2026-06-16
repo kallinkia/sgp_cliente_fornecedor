@@ -45,17 +45,18 @@ public class ClienteEntity implements Serializable {
 	private boolean ativo;
 	
 	
-	// RELACIONAMENTOS
+	
+	//RELACIONAMENTOS
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String nomeRazaoSocial() {
+	public String getNomeRazaoSocial() {
 		return nomeRazaoSocial;
 	}
-	public void setNome_razaoSocial(String nomeRazaoSocial) {
+	public void setNomeRazaoSocial(String nomeRazaoSocial) {
 		this.nomeRazaoSocial = nomeRazaoSocial;
 	}
 	public String getCpf() {
@@ -112,5 +113,8 @@ public class ClienteEntity implements Serializable {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
+	
+	
+	
 
 }
