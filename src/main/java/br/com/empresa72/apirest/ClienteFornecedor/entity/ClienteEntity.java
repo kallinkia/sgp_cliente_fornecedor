@@ -12,17 +12,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "cliente")
-
 public class ClienteEntity implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
 	@Column(name = "nome_razaoSocial")
 	private String nomeRazaoSocial;
 	private String cpf;
@@ -36,10 +33,12 @@ public class ClienteEntity implements Serializable {
 	private boolean ativo;
 	
 	
-	// RELACIONAMENTOS
+	
+	//RELACIONAMENTOS
 	public long getId() {
 		return id;
 	}
+	
 	public String getCpf() {
 		return cpf;
 	}
@@ -113,5 +112,8 @@ public class ClienteEntity implements Serializable {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
+	
+	
+	
 
 }

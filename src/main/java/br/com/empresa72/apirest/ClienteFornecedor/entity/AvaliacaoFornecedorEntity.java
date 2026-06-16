@@ -11,7 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
+
+
 
 @Entity
 @Table(name = "avaliacaoFornecedores")
@@ -26,16 +30,23 @@ public class AvaliacaoFornecedorEntity implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private LocalDate dataDaAvaliacao;
-	@Size(min = 1, max = 5)
+	
+	@Min (value = 1) 
+	@Max(value = 5)
 	private int qualidadeDasPecas;
-	@Size(min = 1, max = 5)
+	
+	@Min (value = 1) 
+	@Max(value = 5)
 	private int prazoDeEntrega;
 	
-	
-	@Size(min = 1, max = 5)
+	@Min (value = 1) 
+	@Max(value = 5)
 	private int atendimento;
-	@Size(min = 1, max = 5)
+	
+	@Min (value = 1) 
+	@Max(value = 5)
 	private int preco;
+	
 	@Size(max = 500)
 	private String observacoes;
 	
@@ -43,8 +54,8 @@ public class AvaliacaoFornecedorEntity implements Serializable{
 		return observacoes;
 	}
 
-	
-	@ManyToOne(fetch = FetchType.LAZY)
+
+	@ManyToOne
 	@JoinColumn(name = "idFornecedores")
 	private FornecedoresEntity fornecedor;
 	

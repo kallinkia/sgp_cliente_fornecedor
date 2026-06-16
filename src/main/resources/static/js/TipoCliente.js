@@ -9,14 +9,14 @@ let editandoId = null;
 
 function limparFormulario(){
 	
-	document.getElementById("Código").value = "";
-	document.getElementById("Status").value = "";
-	document.getElementById("Descrição").value = "";
-	document.getElementById("PercentualdeDesconto").value = "";
-	document.getElementById("LimitedeCrédito").value = "";
-	document.getElementById("PrazodePagamento").value = "";
-	document.getElementById("Observações").value = "";
-	
+	document.getElementById("pessoaFisica").value = "";
+	document.getElementById("pessoaJuridica").value = "";
+	document.getElementById("revendedor").value = "";
+	document.getElementById("oficinaParceira").value = "";
+	document.getElementById("percentualDesconto").value = "";
+	document.getElementById("status").value = "";
+	document.getElementById("clientePremium").value = "";
+	document.getElementById("descricao").value = "";
 	
 	editandoId = null;
 	
@@ -36,27 +36,40 @@ function FecharModal(){
 }
 
 
-async function listarNomes(){
+async function listarTodos(){
 	
 	const response = await fetch(API_BUSCAR_TODOS);
 	const nomes = await response.json();
-	const tbody = document.querySelector("tbody");
+	const tbody = document.getElementById("tabelaTipoCliente");
 	tbody.innerHTML="";
 
     nomes.forEach(nome => {
 
     const tr = document.createElement("tr");
-
+	let statusAI;
+	  
+	  if (fornecedores.status === true) {
+	      statusAI = "Ativo";
+	  } else {
+	      statusAI = "Inativo";
+	  }
     tr.innerHTML = `
 
-<td>${nome.Código}</td>
+<td>${nome.pessoaFisica}</td>
 
-<td>${nome.Descrição}</td>
+<td>${nome.pessoaJuridica}</td>
 
-<td>${nome.Desconto}</td>
+<td>${nome.revendedor}</td>
 
-<td>${nome.Status}</td>
+<td>${nome.oficinaParceira}</td>
 
+<td>${nome.percentualDesconto}</td>
+
+<td>${nome.status}</td>
+
+<td>${nome.clientePremium}</td>
+
+<td>${nome.descricao}</td>
 <td>
 
 <button class="btn btn-warning btn-sm" onclick="editar(${nome.id})">
@@ -81,12 +94,18 @@ tbody.appendChild(tr);
 
 }
 
-async function salvarNome(){
+//inicializar
+document.addEventListener("DOMContentLoaded", () => {
+	listarTodos();
+	
+	});	
+	
+async function salvar(){
 	
 	//RECUPERANDO OS VALORES DOS INPUTS
 	const nome = {
 		
-		pessoaFisica : document.getElementById(' pessoaFisica').value,
+		pessoaFisica : document.getElementById('pessoaFisica').value,
 		pessoaJuridica : document.getElementById('pessoaJuridica').value,
 		revendedor:document.getElementById('revendedor').value,
 		oficinaParceira:document.getElementById('oficinaParceira').value,
@@ -95,7 +114,8 @@ async function salvarNome(){
 		clientePremium:document.getElementById('clientePremium').value,
 		descricao:document.getElementById('descricao').value,
 	}
-	
+	console.log("SALVANDO...");
+	console.log(nome);
 	
 	if(editandoId){
 		//EDITANDO
@@ -130,8 +150,8 @@ async function salvarNome(){
 		
 		}
 		FecharModal();
-		await listarNomes();
-		limparFormulario();
+		await listarTodos();
+		//limparFormulario();
 		
 	}	
 		
@@ -144,7 +164,7 @@ async function salvarNome(){
 			method:"DELETE"
 		});
 		
-		listarNomes();
+		listarTodos();
 	}	
 		
 	async function editar(id){

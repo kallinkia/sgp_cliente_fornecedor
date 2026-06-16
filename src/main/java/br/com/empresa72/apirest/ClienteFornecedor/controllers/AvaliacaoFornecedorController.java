@@ -1,6 +1,7 @@
 
 package br.com.empresa72.apirest.ClienteFornecedor.controllers;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,9 +31,11 @@ public class AvaliacaoFornecedorController {
 	@GetMapping("/listarTodos")
 	@ResponseStatus(HttpStatus.OK)
 	public List< AvaliacaoFornecedorEntity> listarAvalicao(){
+
 		return avaliacaoRepo.findAll();
 	}
-	
+
+
 	@GetMapping("/listarPorId/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public Optional<AvaliacaoFornecedorEntity> listarPorId (@PathVariable Long id){
