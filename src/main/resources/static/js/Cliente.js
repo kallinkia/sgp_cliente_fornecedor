@@ -298,4 +298,3 @@ async function pesquisar() {
         tbody.appendChild(tr);
     });
 }
-

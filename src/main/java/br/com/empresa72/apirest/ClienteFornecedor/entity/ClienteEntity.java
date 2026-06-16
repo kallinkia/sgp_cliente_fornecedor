@@ -7,14 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.swing.Spring;
-import javax.validation.constraints.Email;
 
-import org.hibernate.validator.constraints.br.CNPJ;
-import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 @Table(name = "cliente")
@@ -31,11 +25,8 @@ public class ClienteEntity implements Serializable {
 	private long id;
 	@Column(name = "nome_razaoSocial")
 	private String nomeRazaoSocial;
-	@CPF
 	private String cpf;
-	@CNPJ
 	private String cnpj;
-	@Email
 	private String email;
 	private String telefone;
 	private String endereco;
@@ -49,15 +40,6 @@ public class ClienteEntity implements Serializable {
 	public long getId() {
 		return id;
 	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public String nomeRazaoSocial() {
-		return nomeRazaoSocial;
-	}
-	public void setNome_razaoSocial(String nomeRazaoSocial) {
-		this.nomeRazaoSocial = nomeRazaoSocial;
-	}
 	public String getCpf() {
 		return cpf;
 	}
@@ -69,6 +51,25 @@ public class ClienteEntity implements Serializable {
 	}
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getNomeRazaoSocial() {
+		return nomeRazaoSocial;
+	}
+	public void setNomeRazaoSocial(String nomeRazaoSocial) {
+		this.nomeRazaoSocial = nomeRazaoSocial;
+	}
+
+	public String nomeRazaoSocial() {
+		return nomeRazaoSocial;
+	}
+	public void setNome_razaoSocial(String nomeRazaoSocial) {
+		this.nomeRazaoSocial = nomeRazaoSocial;
 	}
 	public String getEmail() {
 		return email;
