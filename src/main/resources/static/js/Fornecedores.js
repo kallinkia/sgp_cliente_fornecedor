@@ -8,6 +8,7 @@ const API_BUSCAR_CNPJ = "http://localhost:8011/Fornecedores/listarCnpj";
 
 let editandoId = null;
 
+
 function limparFormulario(){
 	document.getElementById("razaoSocial").value = "";
 	document.getElementById("nomeFantasia").value = "";
@@ -100,7 +101,8 @@ async function salvar(){
 			estado: document.getElementById("estado").value,
 			prazoMedioEntrega: document.getElementById("prazoMedioEntrega").value,
 			status: document.getElementById("status").value
-	};
+};
+
 	console.log("SALVANDO...");
 	console.log(fornecedores);
 	if (editandoId){
@@ -120,10 +122,9 @@ await fetch(API_SALVAR, {
 	body: JSON.stringify(fornecedores)
 });	
 }
-
 fecharModal();
 await listarTodos();
-//limparFormulario();	
+limparFormulario();	
 }
 
 async function deletar(id){
