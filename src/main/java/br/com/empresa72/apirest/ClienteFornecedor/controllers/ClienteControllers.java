@@ -76,5 +76,32 @@ public class ClienteControllers {
 			
 			
 			
+			@GetMapping("/listarNome/{nomeRazaoSocial}")
+			public Optional<ClienteEntity> buscarPorNome(
+			        @PathVariable String nomeRazaoSocial) {
+
+			    return clienterep.findByNomeRazaoSocial(nomeRazaoSocial);
+			}
+			
+			
+			// BUSCAR POR CNPJ
+			@GetMapping("/listarCnpj/{cnpj}")
+			@ResponseStatus(HttpStatus.OK)
+			public Optional<ClienteEntity> buscarPorCnpj(
+			        @PathVariable String cnpj) {
+
+			    return clienterep.findByCnpj(cnpj);
+			}
 	
+	       // BUSCAR POR CNPJ
+			@GetMapping("/listarCpf/{cpf}")
+			@ResponseStatus(HttpStatus.OK)
+				public Optional<ClienteEntity> buscarPorCpf(
+				   @PathVariable String cpf) {
+
+						    return clienterep.findByCpf(cpf);
+}		
+			
+	
+			
 }

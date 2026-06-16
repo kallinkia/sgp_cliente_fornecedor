@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Fornecedores</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/fornecedor.css" rel="stylesheet">
+
+    <script src="js/Fornecedores.js"></script>
+</head>
+
+<body>
+
+    <div class="container-fluid py-4">
+
+        <!-- CABEÇALHO -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <div>
+                <h1>Gestão de Fornecedores</h1>
+                <p class="text-muted">
+                    Cadastro e gerenciamento de fornecedores
+                </p>
+            </div>
+
+            <button
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#fornecedorModal">
+
+                + Novo Fornecedor
+
+            </button>
+
+        </div>
+
+        <!-- FILTROS -->
+        <div class="card p-4 mb-4">
+
+            <div class="row">
+
+                <div class="col-md-5">
+                    <label class="form-label">
+                        Razão Social
+                    </label>
+
+                    <input
+                        type="text"
+                        id="filtroRazaoSocial"
+                        class="form-control"
+                        placeholder="Pesquisar razão social">
+                </div>
+
+                <div class="col-md-5">
+                    <label class="form-label">
+                        CNPJ
+                    </label>
+
+                    <input
+                        type="text"
+                        id="filtroCnpj"
+                        class="form-control"
+                        placeholder="Pesquisar CNPJ">
+                </div>
+
+                <div class="col-md-2 d-flex align-items-end">
+
+                    <button
+                        type="button"
+                        class="btn btn-primary w-100"
+                        onclick="pesquisar()">
+
+                        Pesquisar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- TABELA -->
+        <div class="card p-3">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle">
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Razão Social</th>
+                            <th>Nome Fantasia</th>
+                            <th>CNPJ</th>
+                            <th>E-mail</th>
+                            <th>Telefone</th>
+                            <th>Contato</th>
+                            <th>Cidade</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="Fornecedor">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- MODAL CADASTRO -->
+    <div
+        class="modal fade"
+        id="fornecedorModal"
+        tabindex="-1"
+        aria-hidden="true">
+
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+
+            <div class="modal-content border-0 shadow">
+
+                <!-- CORPO -->
+                <div class="modal-body p-5">
+
+                    <div class="mb-4">
+
+                        <h2 class="fw-bold text-primary">
+                            Cadastro de Fornecedores
+                        </h2>
+
+                        <p class="text-muted">
+                            Gerencie os fornecedores responsáveis pelo fornecimento de peças
+                        </p>
+
+                    </div>
+
+                    <form id="formFornecedor">
+
+                        <div class="row g-4">
+
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    Razão Social *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="razaoSocial"
+                                    class="form-control">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    Nome Fantasia *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nomeFantasia"
+                                    class="form-control">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    CNPJ *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="cnpj"
+                                    class="form-control">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    E-mail *
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    class="form-control">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    Telefone *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="telefone"
+                                    class="form-control">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    Contato Responsável *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="contatoResponsavel"
+                                    class="form-control">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">
+                                    Endereço
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="endereco"
+                                    class="form-control">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    Cidade
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="cidade"
+                                    class="form-control">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    Estado
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="estado"
+                                    class="form-control">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    Prazo Médio de Entrega (dias)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="prazoMedioEntrega"
+                                    class="form-control">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">
+                                    Status
+                                </label>
+
+                                <select
+                                    id="status"
+                                    class="form-select">
+
+                                    <option value="ATIVO">
+                                        Ativo
+                                    </option>
+
+                                    <option value="INATIVO">
+                                        Inativo
+                                    </option>
+
+                                </select>
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <!-- RODAPÉ -->
+                <div class="modal-footer border-0 px-5 pb-4">
+
+                    <button
+                        type="button"
+                        class="btn btn-light"
+                        data-bs-dismiss="modal">
+
+                        Cancelar
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn btn-primary px-4"
+                        onclick="salvar()">
+
+                        Salvar Fornecedor
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
