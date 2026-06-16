@@ -1,211 +1,180 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avaliação de Fornecedores</title>
+
     <link rel="stylesheet" href="css/avaliacaofornecedor.css">
+    <script src="js/AvaliacaoFornecedor.js" defer></script>
 </head>
 <body>
 
 <div class="container">
 
-    <div class="card-principal">
-        <h1>Avaliação de Fornecedores</h1>
-        <p>Selecione um fornecedor para avaliar</p>
+    <div class="card">
 
-        <div class="lista-fornecedores">
+        <div class="header">
+            <h1>⭐ Avaliação de Fornecedores</h1>
 
-            <div class="fornecedor">
-                <div class="info">
-                    <div class="icone azul">🏢</div>
+            <button class="btn-nova-avaliacao"
+                    onclick="abrirModal('Nova Avaliação')">
+                + Nova Avaliação
+            </button>
+        </div>
 
-                    <div>
-                        <h3>Fornecedor Alfa</h3>
-                        <span>Peças Automotivas</span>
-                        <p>📍 São Paulo - SP</p>
-                    </div>
-                </div>
+        <div class="table-responsive">
 
-                <button
-                    class="btn-avaliar"
-                    onclick="abrirModal('Fornecedor Alfa')">
-                    ⭐ Avaliar
-                </button>
-            </div>
+            <table class="tabela-fornecedores">
 
-            <div class="fornecedor">
-                <div class="info">
-                    <div class="icone verde">🚚</div>
+                <thead>
+                    <tr>
+                        <th>Fornecedor</th>
+                        <th>Categoria</th>
+                        <th>Cidade</th>
+                        <th>Avaliação Média</th>
+                    </tr>
+                </thead>
 
-                    <div>
-                        <h3>Fornecedor Beta</h3>
-                        <span>Materiais Elétricos</span>
-                        <p>📍 Rio de Janeiro - RJ</p>
-                    </div>
-                </div>
+                <tbody>
 
-                <button
-                    class="btn-avaliar"
-                    onclick="abrirModal('Fornecedor Beta')">
-                    ⭐ Avaliar
-                </button>
-            </div>
+                    <tr onclick="abrirModal('Fornecedor Alfa')">
+                        <td>Fornecedor Alfa</td>
+                        <td>Peças Automotivas</td>
+                        <td>São Paulo - SP</td>
+                        <td><span class="stars-view">★★★★☆</span> 4.0</td>
+                    </tr>
 
-            <div class="fornecedor">
-                <div class="info">
-                    <div class="icone amarelo">🛠</div>
+                    <tr onclick="abrirModal('Fornecedor Beta')">
+                        <td>Fornecedor Beta</td>
+                        <td>Materiais Elétricos</td>
+                        <td>Rio de Janeiro - RJ</td>
+                        <td><span class="stars-view">★★★☆☆</span> 3.0</td>
+                    </tr>
 
-                    <div>
-                        <h3>Fornecedor Gama</h3>
-                        <span>Ferramentas</span>
-                        <p>📍 Belo Horizonte - MG</p>
-                    </div>
-                </div>
+                    <tr onclick="abrirModal('Fornecedor Gama')">
+                        <td>Fornecedor Gama</td>
+                        <td>Ferramentas</td>
+                        <td>Belo Horizonte - MG</td>
+                        <td><span class="stars-view">★★★★★</span> 5.0</td>
+                    </tr>
 
-                <button
-                    class="btn-avaliar"
-                    onclick="abrirModal('Fornecedor Gama')">
-                    ⭐ Avaliar
-                </button>
-            </div>
+                </tbody>
 
-            <div class="fornecedor">
-                <div class="info">
-                    <div class="icone roxo">📦</div>
-
-                    <div>
-                        <h3>Fornecedor Delta</h3>
-                        <span>Componentes Industriais</span>
-                        <p>📍 Curitiba - PR</p>
-                    </div>
-                </div>
-
-                <button
-                    class="btn-avaliar"
-                    onclick="abrirModal('Fornecedor Delta')">
-                    ⭐ Avaliar
-                </button>
-            </div>
+            </table>
 
         </div>
+
     </div>
 
 </div>
 
 <!-- MODAL -->
+
 <div id="modalAvaliacao" class="modal">
 
     <div class="modal-content">
 
         <div class="modal-header">
-            <div>
-                <h2>Avaliação de Fornecedor</h2>
-                <span id="nomeFornecedor"></span>
-            </div>
 
-            <button class="fechar" onclick="fecharModal()">✖</button>
+            <h2 id="nomeFornecedor"></h2>
+
+            <button class="btn-fechar"
+                    onclick="fecharModal()">
+                ✕
+            </button>
+
         </div>
 
+
+
+		
         <div class="modal-body">
 
-            <label>Data da Avaliação *</label>
-            <input type="date">
+			
+			 <label>Fornecedor</label>
+			 <select id="select">
+			
+			 </select>
+			
+	
 
-            <div class="avaliacao-item">
-                <label>Qualidade das Peças *</label>
-                <div class="rating">
-	    <span class="star" onclick="avaliar(this,1)">★</span>
-	    <span class="star" onclick="avaliar(this,2)">★</span>
-	    <span class="star" onclick="avaliar(this,3)">★</span>
-	    <span class="star" onclick="avaliar(this,4)">★</span>
-	    <span class="star" onclick="avaliar(this,5)">★</span>
-	</div>
-            </div>
 
-            <div class="avaliacao-item">
-                <label>Prazo de Entrega *</label>
-               <div class="rating">
-    <span class="star" onclick="avaliar(this,1)">★</span>
-    <span class="star" onclick="avaliar(this,2)">★</span>
-    <span class="star" onclick="avaliar(this,3)">★</span>
-    <span class="star" onclick="avaliar(this,4)">★</span>
-    <span class="star" onclick="avaliar(this,5)">★</span>
-</div>
-            </div>
+            <label>Data da Avaliação</label>
+            <input type="date" id="dataDaAvaliacao">
 
-            <div class="avaliacao-item">
-                <label>Atendimento *</label>
-               <div class="rating">
-    <span class="star" onclick="avaliar(this,1)">★</span>
-    <span class="star" onclick="avaliar(this,2)">★</span>
-    <span class="star" onclick="avaliar(this,3)">★</span>
-    <span class="star" onclick="avaliar(this,4)">★</span>
-    <span class="star" onclick="avaliar(this,5)">★</span>
-</div>
-            </div>
+            <div class="campo-avaliacao">
+                <span>Qualidade das Peças</span>
 
-            <div class="avaliacao-item">
-                <label>Preço *</label>
-               <div class="rating">
-    <span class="star" onclick="avaliar(this,1)">★</span>
-    <span class="star" onclick="avaliar(this,2)">★</span>
-    <span class="star" onclick="avaliar(this,3)">★</span>
-    <span class="star" onclick="avaliar(this,4)">★</span>
-    <span class="star" onclick="avaliar(this,5)">★</span>
-</div>
-            </div>
-
-            <label>Observações</label>
-            <textarea
-                placeholder="Digite observações sobre o fornecedor...">
-            </textarea>
-
-            <div class="media">
-                <div>
-                    <h3>Média Geral</h3>
-                    <span>4.0 / 5.0</span>
+                <div class="rating" data-campo="qualidadeDasPecas">
+                    <span class="star" onclick="avaliar(this,1)">★</span>
+                    <span class="star" onclick="avaliar(this,2)">★</span>
+                    <span class="star" onclick="avaliar(this,3)">★</span>
+                    <span class="star" onclick="avaliar(this,4)">★</span>
+                    <span class="star" onclick="avaliar(this,5)">★</span>
                 </div>
-
-                <div class="rating">
-    <span class="star" onclick="avaliar(this,1)">★</span>
-    <span class="star" onclick="avaliar(this,2)">★</span>
-    <span class="star" onclick="avaliar(this,3)">★</span>
-    <span class="star" onclick="avaliar(this,4)">★</span>
-    <span class="star" onclick="avaliar(this,5)">★</span>
-</div>
             </div>
+
+            <div class="campo-avaliacao">
+                <span>Prazo de Entrega</span>
+
+                <div class="rating" data-campo="prazoDeEntrega">
+                    <span class="star" onclick="avaliar(this,1)">★</span>
+                    <span class="star" onclick="avaliar(this,2)">★</span>
+                    <span class="star" onclick="avaliar(this,3)">★</span>
+                    <span class="star" onclick="avaliar(this,4)">★</span>
+                    <span class="star" onclick="avaliar(this,5)">★</span>
+                </div>
+            </div>
+
+            <div class="campo-avaliacao">
+                <span>Atendimento</span>
+
+                <div class="rating" data-campo="atendimento">
+                    <span class="star" onclick="avaliar(this,1)">★</span>
+                    <span class="star" onclick="avaliar(this,2)">★</span>
+                    <span class="star" onclick="avaliar(this,3)">★</span>
+                    <span class="star" onclick="avaliar(this,4)">★</span>
+                    <span class="star" onclick="avaliar(this,5)">★</span>
+                </div>
+            </div>
+
+            <div class="campo-avaliacao">
+                <span>Preço</span>
+
+                <div class="rating" data-campo="preco">
+                    <span class="star" onclick="avaliar(this,1)">★</span>
+                    <span class="star" onclick="avaliar(this,2)">★</span>
+                    <span class="star" onclick="avaliar(this,3)">★</span>
+                    <span class="star" onclick="avaliar(this,4)">★</span>
+                    <span class="star" onclick="avaliar(this,5)">★</span>
+                </div>
+            </div>
+
+            <label for="observacoes">Observações</label>
+            <textarea id="observacoes"></textarea>
 
         </div>
 
         <div class="modal-footer">
-            <button
-                class="btn-cancelar"
-                onclick="fecharModal()">
+
+            <button class="btn-cancelar"
+                    onclick="fecharModal()">
                 Cancelar
             </button>
 
-            <button class="btn-salvar">
-                💾 Salvar Avaliação
+            <button class="btn-salvar"
+                    onclick="salvarAvaliacao()">
+                Salvar Avaliação
             </button>
+
         </div>
 
     </div>
 
 </div>
 
-<script>
-
-function abrirModal(nomeFornecedor){
-    document.getElementById("modalAvaliacao").style.display = "flex";
-    document.getElementById("nomeFornecedor").innerText = nomeFornecedor;
-}
-
-function fecharModal(){
-    document.getElementById("modalAvaliacao").style.display = "none";
-}
-
-</script>
-
 </body>
 </html>
+
