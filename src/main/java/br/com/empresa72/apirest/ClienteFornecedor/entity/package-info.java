@@ -1,1 +1,0 @@
-package br.com.empresa72.apirest.ClienteFornecedor.entity;
