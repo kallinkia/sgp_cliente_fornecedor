@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.empresa72.apirest.ClienteFornecedor.entity.ClienteEntity;
-import br.com.empresa72.apirest.ClienteFornecedor.entity.FornecedoresEntity;
 import br.com.empresa72.apirest.ClienteFornecedor.repository.ClienteRepository;
 
 @RestController
