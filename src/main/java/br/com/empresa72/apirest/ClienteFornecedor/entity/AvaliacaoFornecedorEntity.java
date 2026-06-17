@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
@@ -29,6 +30,9 @@ public class AvaliacaoFornecedorEntity implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
+
+    @NotNull(message = "A data da avaliação é obrigatória")
 	private LocalDate dataDaAvaliacao;
 	
 	@Min (value = 1) 

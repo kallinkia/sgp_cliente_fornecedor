@@ -192,15 +192,15 @@ async function listarFornecedor() {
 
             const tr = document.createElement("tr");
 
-			let media = 4/(avaliacao.qualidadeDasPecas + avaliacao.prazoDeEntrega + avaliacao.atendimento + avaliacao.preco);
-			
+			let media = 4/(avaliacao.qualidadeDasPecas + avaliacao.prazoDeEntrega + avaliacao.atendimento + avaliacao.preco)*100;
+			media= media.toFixed(2);
 			
 			
             tr.innerHTML = `
                 <td>${avaliacao.fornecedor.nomeFantasia}</td>
                 <td>${avaliacao.fornecedor.cnpj}</td>
                 <td>${avaliacao.fornecedor.cidade}</td>
-                <td>${media}</td>
+                <td>${media+'%'}</td>
          
             `;
 
