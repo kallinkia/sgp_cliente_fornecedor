@@ -370,5 +370,13 @@ tbody tr:hover{
         display:block;
         overflow-x:auto;
     }
+    
+    #usuario-select {
+    width: 250px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
 }

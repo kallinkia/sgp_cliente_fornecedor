@@ -4,8 +4,8 @@ const API_BUSCAR_POR_ID = "http://localhost:8011/cliente/listarporid";
 const API_ATUALIZAR = "http://localhost:8011/cliente/atualizar";
 const API_DELETAR = "http://localhost:8011/cliente/deletar";
 const API_BUSCAR_NOME = "http://localhost:8011/cliente/listarNome";
-const API_BUSCAR_CPF = "http://localhost:8011/cliente/listarCnpj";
-const API_BUSCAR_CNPJ = "http://localhost:8011/cliente/listarCpf";
+const API_BUSCAR_CPF = "http://localhost:8011/cliente/listarCpf";
+const API_BUSCAR_CNPJ = "http://localhost:8011/cliente/listarCnpj";
 
 let editandoId = null;
 
@@ -77,7 +77,7 @@ async function listarTodos() {
 					<td>${cliente.cidade}</td>
 					<td>${cliente.estado}</td>
 					<td>${cliente.tipo}</td>
-					<td>${cliente.status ? "Ativo" : "Inativo"}</td>
+					<td>${cliente.ativo ? "Ativo" : "Inativo"}</td>
 					<td>
 
                     <button
@@ -115,39 +115,44 @@ async function salvar() {
 
     const cliente = {
 
-        nome_razaoSocial:document.getElementById("nome_razaoSocial").value,
+        nomeRazaoSocial: document.getElementById("nome_razaoSocial").value,
         cpf: document.getElementById("cpf").value,
-        cnpj:document.getElementById("cnpj").value,
-        email:document.getElementById("email").value,
-        telefone:document.getElementById("telefone").value,
-        endereco:document.getElementById("endereco").value,
-        cidade:document.getElementById("cidade").value,
-        estado:document.getElementById("estado").value,
-        tipo:document.getElementById("tipo").value,
-        ativo:document.getElementById("ativo").value === "true"
+        cnpj: document.getElementById("cnpj").value,
+        email: document.getElementById("email").value,
+        telefone: document.getElementById("telefone").value,
+        endereco: document.getElementById("endereco").value,
+        cidade: document.getElementById("cidade").value,
+        estado: document.getElementById("estado").value,
+        tipo: document.getElementById("tipo").value,
+        ativo: document.getElementById("ativo").value === "true"
+
     };
+
+    if (!cliente.nomeRazaoSocial || !cliente.email || !cliente.telefone || !cliente.tipo) {
+        alert("Preencha todos os campos obrigatórios.");
+        return;
+    }
 
     if (editandoId) {
 
-        await fetch(`${API_ATUALIZAR}/${editandoId}`,{
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(cliente)
-            }
-        );
+        await fetch(`${API_ATUALIZAR}/${editandoId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(cliente)
+        });
 
     } else {
 
-        await fetch(API_SALVAR,{
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(cliente)
-            }
-        );
+        await fetch(API_SALVAR, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(cliente)
+        });
+
     }
 
     fecharModal();
@@ -181,16 +186,16 @@ async function editar(id) {
 
     editandoId = id;
 
-    document.getElementById("nome_razaoSocial").value =cliente.nome_razaoSocial;
-    document.getElementById("cpf").value =cliente.cpf ?? "";
-    document.getElementById("cnpj").value =cliente.cnpj ?? "";
-    document.getElementById("email").value =cliente.email;
-    document.getElementById("telefone").value =cliente.telefone;
-    document.getElementById("endereco").value =cliente.endereco;
-    document.getElementById("cidade").value =cliente.cidade;
-    document.getElementById("estado").value =cliente.estado;
-    document.getElementById("tipo").value =cliente.tipo;
-    document.getElementById("ativo").value =cliente.ativo.toString();
+	document.getElementById("nome_razaoSocial").value = cliente.nomeRazaoSocial;
+	document.getElementById("cpf").value = cliente.cpf;
+	document.getElementById("cnpj").value = cliente.cnpj;
+	document.getElementById("email").value = cliente.email;
+	document.getElementById("telefone").value = cliente.telefone;
+	document.getElementById("endereco").value = cliente.endereco;
+	document.getElementById("cidade").value = cliente.cidade;
+	document.getElementById("estado").value = cliente.estado;
+	document.getElementById("tipo").value = cliente.tipo;
+	document.getElementById("ativo").value = cliente.ativo;
 
     abrirModal();
 }
@@ -299,3 +304,25 @@ async function pesquisar() {
     });
 }
 
+async function carregarDadosSelect() {
+
+    const response = await fetch(API_URL_LISTAR_DADOS);
+    const dados = await response.json();
+
+    const select = document.getElementById('usuario-select');
+
+    select.innerHTML = '';
+
+    const optionDefault = document.createElement('option');
+    optionDefault.value = '';
+    optionDefault.textContent = 'Selecione uma opção';
+    select.appendChild(optionDefault);
+
+    dados.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.id;
+        option.textContent = item.nome;
+        select.appendChild(option);
+    });
+
+}
