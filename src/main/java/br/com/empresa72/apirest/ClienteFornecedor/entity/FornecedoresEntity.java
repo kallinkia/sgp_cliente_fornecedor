@@ -19,11 +19,11 @@ public class FornecedoresEntity {
 	    private String razaoSocial;
  
 	    private String nomeFantasia;
-
+	    
 	    @CNPJ
 	    private String cnpj;
 	    
-		@Email
+	    @Email
 	    private String email;
 		
 	    private String telefone;
