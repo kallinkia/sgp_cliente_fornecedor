@@ -43,33 +43,26 @@ async function listarTodos(){
 	const tbody = document.getElementById("Fornecedor");
 			tbody.innerHTML="";
 
-	fornecedores.forEach(fornecedores=>{
+	fornecedores.forEach(fornecedor=>{
 	const tr = document.createElement("tr");
-	let statusAI;
-	  
-	  if (fornecedores.status === true) {
-	      statusAI = "Ativo";
-	  } else {
-	      statusAI = "Inativo";
-	  }
 
 		tr.innerHTML = `
-		<td>${fornecedores.id}</td>
-		<td>${fornecedores.razaoSocial}</td>
-		<td>${fornecedores.nomeFantasia}</td>
-		<td>${fornecedores.cnpj}</td>
-		<td>${fornecedores.email}</td>
-		<td>${fornecedores.telefone}</td>
-		<td>${fornecedores.contatoResponsavel}</td>
-		<td>${fornecedores.cidade}</td>
-		<td>${fornecedores.status ? "Ativo" : "Inativo"}</td>
+		<td>${fornecedor.id}</td>
+		<td>${fornecedor.razaoSocial}</td>
+		<td>${fornecedor.nomeFantasia}</td>
+		<td>${fornecedor.cnpj}</td>
+		<td>${fornecedor.email}</td>
+		<td>${fornecedor.telefone}</td>
+		<td>${fornecedor.contatoResponsavel}</td>
+		<td>${fornecedor.cidade}</td>
+		<td>${fornecedor.status ? "Ativo" : "Inativo"}</td>
 		<td>
 
-		    <button class="btn btn-warning btn-sm" onclick="editar(${fornecedores.id})">
+		    <button class="btn btn-warning btn-sm" onclick="editar(${fornecedor.id})">
 		        Editar
 		    </button>
 
-		    <button class="btn btn-danger btn-sm" onclick="deletar(${fornecedores.id})">
+		    <button class="btn btn-danger btn-sm" onclick="deletar(${fornecedor.id})">
 		        Deletar
 		    </button>
 
@@ -103,7 +96,10 @@ async function salvar(){
 			status: document.getElementById("status").value
 };
 
-	console.log("SALVANDO...");
+if (!fornecedores.razaoSocial || !fornecedores.nomeFantasia || !fornecedores.cnpj || !fornecedores.email || !fornecedores.telefone || !fornecedores.contatoResponsavel) {
+        alert("Preencha todos os campos obrigatórios.");
+        return;
+    }
 	console.log(fornecedores);
 	if (editandoId){
 		await fetch (`${API_ATUALIZAR}/${editandoId}`,{
@@ -114,7 +110,7 @@ async function salvar(){
 			body:JSON.stringify(fornecedores)
 		});
 	}else {
-await fetch(API_SALVAR, {
+	await fetch(API_SALVAR, {
 	method: "POST",
 	headers: {
 		"Content-Type": "application/json"
@@ -125,7 +121,10 @@ await fetch(API_SALVAR, {
 fecharModal();
 await listarTodos();
 limparFormulario();	
+
+console.log(fornecedores);
 }
+
 
 async function deletar(id){
 	if (!confirm("Deseja realmente excluir?")) return;
