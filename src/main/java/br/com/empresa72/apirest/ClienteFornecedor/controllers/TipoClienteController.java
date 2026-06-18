@@ -34,23 +34,33 @@ public class TipoClienteController {
 
 		return Clie.findAll();
 	}
+	
+	// BUSCAR POR DESCRIÇÃO
+	@GetMapping("/listarDescricao/{descricao}")
+	@ResponseStatus(HttpStatus.OK)
+	public List<TipoClienteEntity> buscarPorDescricao(@PathVariable String descricao) {
+
+	    return Clie.findByDescricaoContainingIgnoreCase(descricao);
+	}
 
 	// LISTANDO USUARIOS POR ID
-	@GetMapping("/listarporid/{id}")
+	@GetMapping("/listarId/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public Optional<TipoClienteEntity> buscarPorID(@PathVariable Long id) {
 
 		return Clie.findById(id);
 	}
 
-	// PUT ATUALIZAR USUARIO
 	@PutMapping("/atualizar/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public TipoClienteEntity atualizar(@RequestBody TipoClienteEntity cliee) {
+	public TipoClienteEntity atualizar(
+	        @PathVariable Long id,
+	        @RequestBody TipoClienteEntity cliee) {
 
-		return Clie.save(cliee);
+	    cliee.setId(id);
+
+	    return Clie.save(cliee);
 	}
-
 	// METODO DELETAR
 	@DeleteMapping("/deletar/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
