@@ -9,6 +9,10 @@ const API_BUSCAR_CNPJ = "http://localhost:8011/cliente/listarCnpj";
 
 let editandoId = null;
 
+function voltarPagina() {
+    window.history.back();
+}
+
 function limparFormulario() {
 
     document.getElementById("nome_razaoSocial").value = "";
@@ -278,7 +282,7 @@ async function pesquisar() {
 								<td>${cliente.cidade}</td>
 								<td>${cliente.estado}</td>
 								<td>${cliente.tipo}</td>
-								<td>${cliente.status ? "Ativo" : "Inativo"}</td>
+								<td>${cliente.ativo ? "Ativo" : "Inativo"}</td>
 								<td>
 
                 <button
@@ -326,3 +330,9 @@ async function carregarDadosSelect() {
     });
 
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    listarTodos();
+
+});
