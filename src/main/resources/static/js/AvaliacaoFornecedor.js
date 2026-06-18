@@ -229,30 +229,40 @@ async function listarFornecedor() {
 
         const tbody = document.getElementById("tabela");
 
- 
- console.log(avaliacoes.length);
+ 		console.log("Avaliações recebidas:", avaliacoes);
         tbody.innerHTML = "";
 
-        avaliacoes.forEach(avaliacao => {
+		avaliacoes.forEach(avaliacao => {
 
-            const tr = document.createElement("tr");
+		    if (!avaliacao.fornecedor) {
+		        console.warn(
+		            `Avaliação ${avaliacao.id} sem fornecedor`
+		        );
+		        return;
+		    }
 
-			let media = 4/(avaliacao.qualidadeDasPecas + avaliacao.prazoDeEntrega + avaliacao.atendimento + avaliacao.preco)*100;
-			media= media.toFixed(2);
-			
-			
-            tr.innerHTML = `
-                <td>${avaliacao.fornecedor.nomeFantasia}</td>
-                <td>${avaliacao.fornecedor.cnpj}</td>
-                <td>${avaliacao.fornecedor.cidade}</td>
-                <td>${media+'%'}</td>
-         
-            `;
-			console.log(1);
-            tbody.appendChild(tr);
-        });
+		    const tr = document.createElement("tr");
 
+		    let soma =
+		        avaliacao.qualidadeDasPecas +
+		        avaliacao.prazoDeEntrega +
+		        avaliacao.atendimento +
+		        avaliacao.preco;
 
+		    let media = ((soma / 20) * 100).toFixed(2);
+
+		    tr.innerHTML = `
+		        <td>${avaliacao.fornecedor.nomeFantasia}</td>
+		        <td>${avaliacao.fornecedor.cnpj}</td>
+		        <td>${avaliacao.fornecedor.cidade}</td>
+		        <td>${media}%</td>
+		    `;
+
+		    tbody.appendChild(tr);
+
+		});
+		console.log("Avaliações recebidas:", avaliacoes.length);
+		console.log("Linhas criadas:", tbody.children.length);
 }
 
 // INICIAR TELA
