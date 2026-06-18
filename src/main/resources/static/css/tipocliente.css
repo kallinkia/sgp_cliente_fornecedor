@@ -209,6 +209,20 @@ body{
     border:none;
 }
 
+.btn-voltar{
+    background:#6b7280;
+    color:white;
+    padding:12px 22px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.btn-voltar:hover{
+    background:#4b5563;
+}
+
 /* ==========================
    CONTADOR
 ========================== */
