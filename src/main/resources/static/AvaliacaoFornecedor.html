@@ -37,25 +37,8 @@
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody id="tabela">
 
-                    <tr onclick="abrirModal('Fornecedor Alfa')">
-                      
-                       
-                    </tr>
-
-                    <tr onclick="abrirModal('Fornecedor Beta')">
-                      
-                    </tr>
-
-                    <tr onclick="abrirModal('Fornecedor Gama')">
-                       
-                     
-                    </tr>
-					<tr onclick="abrirModal('Fornecedor Gama')">
-		                       
-		                     
-		              </tr>
 				
                 </tbody>
 
@@ -93,14 +76,14 @@
 				<div class="campo">
 	    <label for="fornecedor">Fornecedor </label>
 	
-	    <select id="select">
+	    <select id="select" required>
 	       
 	    </select>
 	</div>
 		
 
             <label>Data da Avaliação</label>
-            <input type="date" id="dataDaAvaliacao">
+            <input type="date" id="dataDaAvaliacao" required="required">
 
             <div class="campo-avaliacao">
                 <span>Qualidade das Peças</span>

@@ -3,6 +3,7 @@ package br.com.empresa72.apirest.ClienteFornecedor.entity;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,6 +16,8 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.apache.logging.log4j.message.Message;
 
 
 
@@ -32,23 +35,27 @@ public class AvaliacaoFornecedorEntity implements Serializable{
 	private long id;
 	
 
-    @NotNull(message = "A data da avaliação é obrigatória")
+	@Column(nullable = false)
 	private LocalDate dataDaAvaliacao;
 	
 	@Min (value = 1) 
 	@Max(value = 5)
+	@Column(nullable = false)
 	private int qualidadeDasPecas;
 	
 	@Min (value = 1) 
 	@Max(value = 5)
+	@Column(nullable = false)
 	private int prazoDeEntrega;
 	
 	@Min (value = 1) 
 	@Max(value = 5)
+	@Column(nullable = false)
 	private int atendimento;
 	
 	@Min (value = 1) 
 	@Max(value = 5)
+	@Column(nullable = false)
 	private int preco;
 	
 	@Size(max = 500)
@@ -60,7 +67,7 @@ public class AvaliacaoFornecedorEntity implements Serializable{
 
 
 	@ManyToOne
-	@JoinColumn(name = "idFornecedores")
+	@JoinColumn(name = "idFornecedores", nullable = false)
 	private FornecedoresEntity fornecedor;
 	
 	public void setObservacoes(String observacoes) {

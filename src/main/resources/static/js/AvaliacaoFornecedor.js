@@ -17,8 +17,14 @@ let preco = 0;
 // SALVAR
 async function salvarAvaliacao() {
 
-    const avaliacao = {
+    
+	
+	const avaliacao = {
 
+		fornecedor : {
+			id : document.getElementById("select").value
+		},
+		
         dataDaAvaliacao: document.getElementById("dataDaAvaliacao").value,
 
         qualidadeDasPecas: qualidadeDasPecas,
@@ -31,8 +37,10 @@ async function salvarAvaliacao() {
 
         observacoes: document.getElementById("observacoes").value
     };
+	
 
-    console.log(avaliacao);
+    console.log(validarCampo());
+	console. log (dataDaAvaliacao);
 
     await fetch(API_CADASTRAR, {
         method: "POST",
@@ -48,6 +56,43 @@ async function salvarAvaliacao() {
     limparFormulario();
     listarFornecedor();
 }
+
+ function validarCampo()  {
+
+	const select = document.getElementById("select").value;
+		
+
+		 if (qualidadeDasPecas < 1){
+			
+			alert("Preencha este campo!")
+			return false;
+		} 
+
+		 if(prazoDeEntrega < 1){
+			
+			alert("Preencha este campo!")
+			return false;
+		}
+
+		 if(atendimento < 1){
+			
+			alert("Preencha este campo!")
+			return false;
+		}
+
+		 if (preco < 1){
+						
+			alert("Preencha este campo!")
+			return false;
+		}
+
+		 if (select === ""){
+												
+			alert("Preencha este campo!")
+			return false;
+		}
+				return true; 		
+	}
 
 // LIMPAR FORMULÁRIO
 function limparFormulario() {
@@ -182,10 +227,10 @@ async function listarFornecedor() {
 
         const avaliacoes = await response.json();
 
-        const tbody = document.querySelector("tbody");
+        const tbody = document.getElementById("tabela");
 
-        if (!tbody) return;
- console.log(avaliacoes);
+ 
+ console.log(avaliacoes.length);
         tbody.innerHTML = "";
 
         avaliacoes.forEach(avaliacao => {
@@ -203,7 +248,7 @@ async function listarFornecedor() {
                 <td>${media+'%'}</td>
          
             `;
-
+			console.log(1);
             tbody.appendChild(tr);
         });
 
