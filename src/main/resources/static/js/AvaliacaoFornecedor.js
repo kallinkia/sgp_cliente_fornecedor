@@ -9,6 +9,10 @@ const API_URL_LISTAR_DADOS= 'http://localhost:8011/Fornecedores/listarTodos';
 // VARIÁVEIS DE CONTROLE
 let editandoid = null;
 
+function voltarPagina() {
+    window.history.back();
+}
+
 let qualidadeDasPecas = 0;
 let prazoDeEntrega = 0;
 let atendimento = 0;
