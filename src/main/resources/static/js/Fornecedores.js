@@ -8,6 +8,9 @@ const API_BUSCAR_CNPJ = "http://localhost:8011/Fornecedores/listarCnpj";
 
 let editandoId = null;
 
+function voltarPagina() {
+    window.history.back();
+}
 
 function limparFormulario(){
 	document.getElementById("razaoSocial").value = "";
