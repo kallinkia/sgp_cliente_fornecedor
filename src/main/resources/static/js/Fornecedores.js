@@ -9,7 +9,7 @@ const API_BUSCAR_CNPJ = "http://192.168.10.84:8011/Fornecedores/listarCnpj";
 let editandoId = null;
 
 function voltarPagina() {
-    window.location.href = "index.html";
+    window.location.href = "http://192.168.10.84:8010/dashboard.html";
 }
 
 function limparFormulario(){
