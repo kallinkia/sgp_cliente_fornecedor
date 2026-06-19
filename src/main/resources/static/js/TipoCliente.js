@@ -8,7 +8,7 @@ const API_BUSCAR_POR_DESCRICAO = "http://localhost:8011/TipoCliente/listarDescri
 let editandoId = null;
 
 function voltarPagina() {
-    window.location.href = "index.html";
+    window.location.href = "192.168.10.84:8010/dashboard.html";
 }
 
 function limparFormulario(){
