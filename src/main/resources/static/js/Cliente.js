@@ -10,7 +10,7 @@ const API_BUSCAR_CNPJ = "http://localhost:8011/cliente/listarCnpj";
 let editandoId = null;
 
 function voltarPagina() {
-    window.history.back();
+    window.location.href = "index.html";
 }
 
 function limparFormulario() {

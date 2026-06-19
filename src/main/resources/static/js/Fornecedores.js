@@ -9,7 +9,7 @@ const API_BUSCAR_CNPJ = "http://localhost:8011/Fornecedores/listarCnpj";
 let editandoId = null;
 
 function voltarPagina() {
-    window.history.back();
+    window.location.href = "index.html";
 }
 
 function limparFormulario(){

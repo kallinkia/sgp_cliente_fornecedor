@@ -10,7 +10,7 @@ const API_URL_LISTAR_DADOS= 'http://localhost:8011/Fornecedores/listarTodos';
 let editandoid = null;
 
 function voltarPagina() {
-    window.history.back();
+    window.location.href = "index.html";
 }
 
 let qualidadeDasPecas = 0;
