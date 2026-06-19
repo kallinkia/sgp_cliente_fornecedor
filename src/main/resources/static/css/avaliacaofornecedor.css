@@ -210,3 +210,118 @@ textarea{
     border-radius:8px;
     font-size:14px;
 }
+
+/* BOTÃO HISTÓRICO */
+
+.btn-historico{
+    background:#1d2d8f;
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:13px;
+    font-weight:600;
+    transition:.2s;
+}
+
+.btn-historico:hover{
+    opacity:.9;
+}
+
+/* MODAL HISTÓRICO */
+
+.modal-historico{
+    max-width:1100px;
+}
+
+.info-fornecedor{
+    margin-bottom:25px;
+}
+
+.info-fornecedor h3{
+    color:#1d2d8f;
+    margin-bottom:20px;
+}
+
+/* CARDS RESUMO */
+
+.resumo-avaliacoes{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.card-resumo{
+    background:#f5f7ff;
+    border-left:5px solid #1d2d8f;
+    padding:15px 20px;
+    border-radius:10px;
+    min-width:180px;
+}
+
+.card-resumo span{
+    display:block;
+    color:#666;
+    margin-bottom:5px;
+}
+
+.card-resumo strong{
+    color:#1d2d8f;
+    font-size:24px;
+}
+
+/* TABELA HISTÓRICO */
+
+.tabela-historico{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.tabela-historico thead{
+    background:#1d2d8f;
+    color:white;
+}
+
+.tabela-historico th,
+.tabela-historico td{
+    padding:14px;
+    text-align:left;
+}
+
+.tabela-historico tbody tr{
+    border-bottom:1px solid #ddd;
+}
+
+.tabela-historico tbody tr:hover{
+    background:#f5f7ff;
+}
+
+/* MÉDIA */
+
+.media-fornecedor{
+    color:#f6b500;
+    font-weight:700;
+}
+
+/* TOTAL DE AVALIAÇÕES */
+
+.total-avaliacoes{
+    font-weight:600;
+    color:#555;
+}
+
+@media(max-width:768px){
+
+    .resumo-avaliacoes{
+        flex-direction:column;
+    }
+
+    .card-resumo{
+        width:100%;
+    }
+
+    .tabela-historico{
+        font-size:14px;
+    }
+}

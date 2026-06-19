@@ -64,6 +64,7 @@ async function salvarAvaliacao() {
  function validarCampo()  {
 
 	const select = document.getElementById("select").value;
+	const observacoes = document.getElementById("observacoes").value;
 		
 
 		 if (qualidadeDasPecas < 1){
@@ -95,7 +96,16 @@ async function salvarAvaliacao() {
 			alert("Preencha este campo!")
 			return false;
 		}
-				return true; 		
+		
+		if (observacoes.length > 500){
+											
+					
+				alert("O maximo de carcters é 500")
+				return false;
+			}
+				
+				return true; 	
+					
 	}
 
 // LIMPAR FORMULÁRIO
@@ -253,13 +263,13 @@ async function listarFornecedor() {
 		        avaliacao.atendimento +
 		        avaliacao.preco;
 
-		    let media = ((soma / 20) * 100).toFixed(2);
+		    let media = (soma / 4).toFixed(2); 
 
 		    tr.innerHTML = `
 		        <td>${avaliacao.fornecedor.nomeFantasia}</td>
 		        <td>${avaliacao.fornecedor.cnpj}</td>
 		        <td>${avaliacao.fornecedor.cidade}</td>
-		        <td>${media}%</td>
+		        <td>${media}</td>
 		    `;
 
 		    tbody.appendChild(tr);
