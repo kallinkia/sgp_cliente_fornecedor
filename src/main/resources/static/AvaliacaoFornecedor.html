@@ -16,6 +16,13 @@
     <div class="card">
 
         <div class="header">
+        
+         <button
+           class="btn-voltar"
+           onclick="window.location.href='http://192.168.10.84:8010/dashboard.html'">
+           Voltar
+         </button>
+        
             <h1>⭐ Avaliação de Fornecedores</h1>
 
             <button class="btn-nova-avaliacao"
@@ -54,7 +61,7 @@
 
 
 <div id="modalAvaliacao" class="modal">
-
+	<form>
     <div class="modal-content">
 
         <div class="modal-header">
@@ -73,7 +80,7 @@
 		
         <div class="modal-body">
 
-	<form>
+
 				<div class="campo">
 	    <label for="fornecedor">Fornecedor </label>
 	
@@ -136,7 +143,7 @@
 
             <label for="observacoes">Observações</label>
             <textarea id="observacoes"></textarea>
-	</form>	
+
         </div>
 
         <div class="modal-footer">
@@ -146,7 +153,7 @@
                 Cancelar
             </button>
 
-            <button class="btn-salvar"
+            <button class="btn-salvar" type="submit"
                     onclick="salvarAvaliacao()">
                 Salvar Avaliação
             </button>
@@ -154,7 +161,7 @@
         </div>
 
     </div>
-
+	</form>	
 </div>
 
 </body>

@@ -1,16 +1,16 @@
 // CHAMADAS DAS APIS
-const API_BUSCAR_TODOS = 'http://localhost:8011/avaliacao/listarTodos';
-const API_BUSCAR_ID = 'http://localhost:8011/avaliacao/listarPorId';
-const API_CADASTRAR = 'http://localhost:8011/avaliacao/salvar';
-const API_DELETAR = 'http://localhost:8011/avaliacao/deletar';
-const API_ATUALIZAR = 'http://localhost:8011/avaliacao/atualizar';
-const API_URL_LISTAR_DADOS= 'http://localhost:8011/Fornecedores/listarTodos';
+const API_BUSCAR_TODOS = 'http://192.168.10.84:8011/avaliacao/listarTodos';
+const API_BUSCAR_ID = 'http://192.168.10.84:8011/avaliacao/listarPorId';
+const API_CADASTRAR = 'http://192.168.10.84:8011/avaliacao/salvar';
+const API_DELETAR = 'http://192.168.10.84:8011/avaliacao/deletar';
+const API_ATUALIZAR = 'http://192.168.10.84:8011/avaliacao/atualizar';
+const API_URL_LISTAR_DADOS= 'http://192.168.10.84:8011/Fornecedores/listarTodos';
 
 // VARIÁVEIS DE CONTROLE
 let editandoid = null;
 
 function voltarPagina() {
-    window.history.back();
+    window.location.href = "192.168.10.84:8010/dashboard.html";
 }
 
 let qualidadeDasPecas = 0;
@@ -21,7 +21,10 @@ let preco = 0;
 // SALVAR
 async function salvarAvaliacao() {
 
-    
+	if (validarCampo()=== true){
+		
+		
+
 	
 	const avaliacao = {
 
@@ -43,8 +46,6 @@ async function salvarAvaliacao() {
     };
 	
 
-    console.log(validarCampo());
-	console. log (dataDaAvaliacao);
 
     await fetch(API_CADASTRAR, {
         method: "POST",
@@ -54,11 +55,12 @@ async function salvarAvaliacao() {
         body: JSON.stringify(avaliacao)
     });
 
-    alert("Avaliação salva com sucesso!");
+  //  alert("Avaliação salva com sucesso!");
 
     fecharModal();
     limparFormulario();
-    listarFornecedor();
+    listarFornecedor();     
+	};
 }
 
  function validarCampo()  {
@@ -69,42 +71,42 @@ async function salvarAvaliacao() {
 
 		 if (qualidadeDasPecas < 1){
 			
-			alert("Preencha este campo!")
+			alert("Preencha este qualidade!")
 			return false;
 		} 
 
 		 if(prazoDeEntrega < 1){
 			
-			alert("Preencha este campo!")
-			return false;
+			alert("Preencha este entrega!")
+				return false;
 		}
 
 		 if(atendimento < 1){
 			
-			alert("Preencha este campo!")
-			return false;
+			alert("Preencha este atendimento!")
+				return false;
 		}
 
 		 if (preco < 1){
 						
-			alert("Preencha este campo!")
-			return false;
+			alert("Preencha este preço!")
+				return false;
 		}
 
 		 if (select === ""){
 												
 			alert("Preencha este campo!")
-			return false;
+				return false;
 		}
 		
 		if (observacoes.length > 500){
 											
 					
 				alert("O maximo de carcters é 500")
-				return false;
+					return false;
 			}
 				
-				return true; 	
+			return true;
 					
 	}
 

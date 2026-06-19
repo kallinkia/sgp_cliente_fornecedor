@@ -1,16 +1,16 @@
-const API_BUSCAR_TODOS = "http://localhost:8011/cliente/listartodos";
-const API_SALVAR = "http://localhost:8011/cliente/salvar";
-const API_BUSCAR_POR_ID = "http://localhost:8011/cliente/listarporid";
-const API_ATUALIZAR = "http://localhost:8011/cliente/atualizar";
-const API_DELETAR = "http://localhost:8011/cliente/deletar";
-const API_BUSCAR_NOME = "http://localhost:8011/cliente/listarNome";
-const API_BUSCAR_CPF = "http://localhost:8011/cliente/listarCpf";
-const API_BUSCAR_CNPJ = "http://localhost:8011/cliente/listarCnpj";
+const API_BUSCAR_TODOS = "http://192.168.10.84:8011/cliente/listartodos";
+const API_SALVAR = "http://192.168.10.84:8011/cliente/salvar";
+const API_BUSCAR_POR_ID = "http://192.168.10.84:8011/cliente/listarporid";
+const API_ATUALIZAR = "http://192.168.10.84:8011/cliente/atualizar";
+const API_DELETAR = "http://192.168.10.84:8011/cliente/deletar";
+const API_BUSCAR_NOME = "http://192.168.10.84:8011/cliente/listarNome";
+const API_BUSCAR_CPF = "http://192.168.10.84:8011/cliente/listarCpf";
+const API_BUSCAR_CNPJ = "http://192.168.10.84:8011/cliente/listarCnpj";
 
 let editandoId = null;
 
 function voltarPagina() {
-    window.history.back();
+    window.location.href = "index.html";
 }
 
 function limparFormulario() {
