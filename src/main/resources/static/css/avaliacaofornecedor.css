@@ -339,3 +339,52 @@ textarea{
         font-size:14px;
     }
 }
+.acoes{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+/* BOTÃO PADRÃO */
+
+.btn-icon{
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:18px;
+    transition:.2s;
+}
+
+/* HISTÓRICO */
+
+.btn-historico{
+    background:#1d2d8f;
+    color:#fff;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.btn-historico:hover{
+    opacity:.9;
+}
+
+/* EDITAR */
+
+.btn-editar{
+    background:#f6b500;
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.btn-editar:hover{
+    opacity:.9;
+}

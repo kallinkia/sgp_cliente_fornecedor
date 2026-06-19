@@ -16,16 +16,7 @@
     <div class="card">
 
         <div class="header">
-        
-         <button
-            class="btn-voltar"
-            onclick="voltarPagina()">
-            Voltar
-         </button>
-        
             <h1>⭐ Avaliação de Fornecedores</h1>
-            
-          
 
             <button class="btn-nova-avaliacao"
                     onclick="abrirModal('Nova Avaliação')">
@@ -33,78 +24,34 @@
             </button>
         </div>
 
-   <div class="table-responsive">
+        <div class="table-responsive">
 
-    <table class="tabela-fornecedores">
+            <table class="tabela-fornecedores">
 
-        <thead>
-            <tr>
-                <th>Fornecedor</th>
-                <th>Categoria</th>
-                <th>Cidade</th>
-                <th>Avaliação Média</th>
-                <th>Total Avaliações</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
+                <thead>
+                    <tr>
+                        <th>Fornecedor</th>
+                        <th>Categoria</th>
+                        <th>Cidade</th>
+                        <th>Avaliação Média</th>
+                    </tr>
+                </thead>
 
-        <tbody id="tabela">
+                <tbody id="tabela">
 
-    </div>
-    <!-- MODAL HISTÓRICO -->
+				
+                </tbody>
 
-<div id="modalHistorico" class="modal">
-
-    <div class="modal-content modal-historico">
-
-        <div class="modal-header">
-
-            <h2>Histórico de Avaliações</h2>
-
-            <button class="btn-fechar"
-                    onclick="fecharHistorico()">
-                ✕
-            </button>
-
-        </div>
-
-        <div class="modal-body">
-
-            <div class="info-fornecedor">
-
-                <h3 id="nomeFornecedorHistorico"></h3>
-
-                <div class="resumo-avaliacoes">
-
-                    <div class="card-resumo">
-                        <span>Média Geral</span>
-                        <strong id="mediaFornecedor">
-                            0.00
-                        </strong>
-                    </div>
-
-                    <div class="card-resumo">
-                        <span>Total Avaliações</span>
-                        <strong id="totalAvaliacoes">
-                            0
-                        </strong>
-                    </div>
-
-                </div>
-
-            </div>
-
-
+            </table>
 
         </div>
 
     </div>
-
-</div>
 
 </div>
 
 <!-- MODAL -->
+
 
 <div id="modalAvaliacao" class="modal">
 
@@ -126,7 +73,7 @@
 		
         <div class="modal-body">
 
-		
+	<form>
 				<div class="campo">
 	    <label for="fornecedor">Fornecedor </label>
 	
@@ -189,7 +136,7 @@
 
             <label for="observacoes">Observações</label>
             <textarea id="observacoes"></textarea>
-
+	</form>	
         </div>
 
         <div class="modal-footer">
